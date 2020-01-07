@@ -11,7 +11,7 @@ mongoose.connect("mongodb://localhost/landing");
 
 let usersModel = require('./models/users');
 let userSessionModel = require('./models/userSession');
-let photoModel = require("./models/photo");
+let galleryModel = require("./models/gallery");
 
 let app = express();
 
@@ -103,8 +103,8 @@ app.post("/api/v1/users/auth/get", (req, res) => {
     });
 });
 
-app.post("/api/v1/photo/get", (req, res) => {
-    photoModel.findOne({_id: req.body._id}).then((data) => {
+app.post("/api/v1/gallery/get", (req, res) => {
+    galleryModel.findOne({_id: req.body._id}).then((data) => {
         if (data.src === undefined) {
             return res.json({
                 response: "NOT_FOUND", data: [{}]
@@ -117,28 +117,43 @@ app.post("/api/v1/photo/get", (req, res) => {
     })
 });
 
-app.post("/api/v1/photo/add", (req, res) => {
+app.post("/api/v1/gallery/getAll", (req, res) => {
+    galleryModel.find({}).limit(req.body.limit).then((data) => {
+        if (data.length === 0) {
+            return res.json({
+                response: "NOT_FOUND", data: [{}]
+            });
+        }
+
+        return res.json({
+            response: "OK", data: data
+        })
+    })
+});
+
+app.post("/api/v1/gallery/add", (req, res) => {
     userSessionModel.find({token: req.body.token}).then(data => {
         if (data.length === 0) {
             return res.json({response: "NOT_ACCESS"});
         }
 
-        let photo = new photoModel({
+        let gallery = new galleryModel({
             src: req.body.src,
             alt: req.body.alt,
+            type: req.body.type,
         });
-        photo.save();
+        gallery.save();
         return res.json({response: "DONE"});
     });
 });
 
-app.post("/api/v1/photo/delete", (req, res) => {
+app.post("/api/v1/gallery/delete", (req, res) => {
     userSessionModel.find({token: req.body.token}).then(data => {
         if (data.length === 0) {
             return res.json({response: "NOT_ACCESS"});
         }
 
-        photoModel.findByIdAndRemove(req.body._id).then((data) => {
+        galleryModel.findByIdAndRemove(req.body._id).then((data) => {
             return res.json({response: "DONE"});
         }).catch((err) => {
             return res.status(500).send(err);
@@ -149,12 +164,12 @@ app.post("/api/v1/photo/delete", (req, res) => {
 app.post("/api/v1/storage/image/upload", (req, res) => {
     let file = req.files.file;
 
-    file.mv("storage/image/" + req.body.filename, (err) => {
+    file.mv("../public/storage/image/" + req.body.filename, (err) => {
         if (err) {
             return res.status(500).send(err);
         }
 
-        res.json({response: "OK", url: "/image/" + req.body.filename});
+        res.json({response: "OK", url: "/storage/image/" + req.body.filename});
     })
 });
 

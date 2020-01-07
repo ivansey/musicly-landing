@@ -18,6 +18,8 @@ class DashBoard extends React.Component {
     render() {
         return <div className="page">
             <h2 className="title">Админ-панель</h2>
+            <br/>
+            <Link to="/admin/gallery">Управление галереей</Link>
             <Link to="/admin/logout">Выход с аккаунта</Link>
         </div>
     }

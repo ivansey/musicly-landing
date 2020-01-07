@@ -62,3 +62,25 @@
   display: flex;
   font-size: 0.75em;
 }
+
+.flex-gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  & img {
+    width: 30%;
+    position: relative;
+    height: 200px;
+    object-fit: cover;
+    margin-bottom: 10px;
+  }
+
+  & iframe {
+    width: 30%;
+    position: relative;
+    height: 200px;
+    margin-bottom: 10px;
+    border: 0;
+  }
+}
