@@ -38,7 +38,7 @@ class Header extends React.Component {
             </p></Link>
             <Link to="/gallery"><p>
                 <TranslatableText dictionary={{
-                    EN: "Repertoire",
+                    EN: "Gallery",
                     RU: "Галлерея",
                     CH: "艺廊",
                 }}/>
