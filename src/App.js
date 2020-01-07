@@ -4,7 +4,7 @@ import cookies from "react-cookies";
 
 import './App.css';
 
-import Header from "./components/Header";
+import Header, {menu} from "./components/Header";
 import Footer from "./components/Footer";
 
 import IndexPage from "./pages/Index";
@@ -54,6 +54,9 @@ class App extends React.Component {
             }}>
                 <BrowserRouter>
                     <Header changeLang={this.changeLang} lang={this.state.lang}/>
+                    <div className="topBar">
+                        {menu({changeLang: this.changeLang, lang: this.state.lang})}
+                    </div>
 
                     <Route path="/" exact component={IndexPage}/>
                     <Route path="/gallery" exact component={Gallery}/>

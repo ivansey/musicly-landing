@@ -1,30 +1,80 @@
-@import url('https://fonts.googleapis.com/css?family=Merriweather:300,400,700&display=swap&subset=cyrillic');
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans:400,400i,700&display=swap&subset=cyrillic');
+
+html, body {
+  height: 100%;
+}
 
 * {
   margin: 0;
   padding: 0;
   outline: none;
-  font-family: "Merriweather", sans-serif;
+  font-family: "Noto Sans", sans-serif;
+}
+
+#root {
+  height: 100%;
+}
+
+.app {
+  height: 100%;
 }
 
 .header {
   display: flex;
-  justify-content: space-between;
-  width: calc(100% - 40px);
-  margin-left: 20px;
-  margin-right: 20px;
-  border-bottom: 3px solid #000;
+  justify-content: center;
+  align-items: flex-end;
+  width: 100%;
+  height: 100%;
+  min-height: 100%;
+  position: relative;
   font-size: 2em;
-  margin-bottom: 20px;
+  background: url("https://99px.ru/sstorage/53/2012/03/tmb_37090_1500.jpg");
+  background-size: cover;
+  background-attachment: fixed;
 
   & .title {
-    margin-left: 20px;
+    line-height: 0.75;
+    color: #fff;
+    font-size: 4em;
+    font-weight: bold;
+  }
+
+  @media (max-width: 768px) {
+    & {
+      & .title {
+        font-size: 2em;
+      }
+    }
+  }
+}
+
+.topBar {
+  height: max-content;
+  min-height: 50px;
+  width: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+
+  @media (max-width: 754px) {
+    & {
+      margin-top: 10px;
+    }
   }
 
   & .menu {
     display: flex;
+    height: 100%;
+    width: 100%;
+    min-height: 50px;
     align-items: center;
-    margin-right: 20px;
+    text-transform: uppercase;
+    font-weight: bold;
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
 
     & a {
       font-size: initial !important;
@@ -39,26 +89,57 @@
       padding-right: 5px;
 
       &:hover {
-        color: #000;
-        background: #9c9c9c;
+        color: #6d6d6d;
+        text-decoration: #6d6d6d solid underline;
       }
 
       &:focus {
-        color: #000;
+        color: #6d6d6d;
+        text-decoration: #6d6d6d solid underline;
+      }
+    }
+
+    & select {
+      padding-left: 5px;
+      padding-right: 5px;
+      border: 0;
+      height: 100%;
+      font-size: initial !important;
+      font-weight: bold;
+
+      &:hover {
+        color: #6d6d6d;
+        text-decoration: #6d6d6d solid underline;
+      }
+
+      &:active {
+        color: #6d6d6d;
+        text-decoration: #6d6d6d solid underline;
       }
     }
   }
 }
 
 .page {
-  margin-left: 40px;
-  margin-right: 40px;
+  margin-top: 40px;
+
+  & .block {
+    margin-left: 40px;
+    margin-right: 40px;
+  }
+
+  @media (max-width: 680px) {
+    & {
+      & .block {
+        margin-left: 10px;
+        margin-right: 10px;
+      }
+    }
+  }
 }
 
 .footer {
-  margin-left: 40px;
-  margin-right: 40px;
-  margin-top: 40px;
+  margin: 40px;
   display: flex;
   font-size: 0.75em;
 }
@@ -82,5 +163,63 @@
     height: 200px;
     margin-bottom: 10px;
     border: 0;
+  }
+}
+
+.miniArticles {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+.article {
+  width: 45%;
+  border: 1px solid #000;
+  display: flex;
+  flex-direction: column-reverse;
+  margin-bottom: 20px;
+
+  & .text {
+    margin-top: 5px;
+    text-transform: uppercase;
+    font-weight: bold;
+    padding: 10px;
+
+    & .title {
+      font-size: 1.2em;
+      margin-bottom: 5px;
+    }
+  }
+
+  & img {
+    height: 245px;
+    width: 100%;
+    object-fit: cover;
+    border-bottom: 1px solid #000;
+  }
+
+  @media (max-width: 680px) {
+    & {
+      width: 100%;
+    }
+  }
+}
+
+.fixedImage {
+  padding-top: 100px;
+  padding-bottom: 100px;
+
+  & p {
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 3em;
+    text-align: center;
+  }
+
+  &#fi-1 {
+    background: url("https://i.pinimg.com/564x/96/f7/ae/96f7aec23b0b83638168934fbaf08513.jpg");
+    background-attachment: fixed;
+    background-size: cover;
+    color: #fff;
   }
 }
