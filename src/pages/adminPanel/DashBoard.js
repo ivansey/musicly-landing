@@ -12,7 +12,7 @@ class DashBoard extends React.Component {
             if (data.data.response === "NOT_TOKEN") {
                 this.props.history.push("/admin/login");
             }
-        })
+        });
     }
 
     render() {
@@ -20,6 +20,8 @@ class DashBoard extends React.Component {
             <h2 className="title">Админ-панель</h2>
             <br/>
             <Link to="/admin/gallery">Управление галереей</Link>
+            <Link to="/admin/about">Управление информацией о себе</Link>
+            <Link to="/admin/articles">Управление новостями</Link>
             <Link to="/admin/logout">Выход с аккаунта</Link>
         </div>
     }

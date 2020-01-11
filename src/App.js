@@ -14,6 +14,11 @@ import LogOut from "./pages/adminPanel/LogOut";
 import GalleryAdmin from "./pages/adminPanel/Gallery/Gallery";
 import GalleryAdd from "./pages/adminPanel/Gallery/Add";
 import Gallery from "./pages/Gallery";
+import About from "./pages/About";
+import AboutEdit from "./pages/adminPanel/About/About";
+import Articles from "./pages/Articles";
+import ArticlesAdmin from "./pages/adminPanel/Articles/Articles";
+import ArticleAdd from "./pages/adminPanel/Articles/Add";
 
 const LanguageContext = React.createContext();
 const LanguageConsumer = LanguageContext.Consumer;
@@ -54,12 +59,14 @@ class App extends React.Component {
             }}>
                 <BrowserRouter>
                     <Header changeLang={this.changeLang} lang={this.state.lang}/>
-                    <div className="topBar">
-                        {menu({changeLang: this.changeLang, lang: this.state.lang})}
-                    </div>
+                    {/*<div className="topBar">*/}
+                    {/*    {menu({changeLang: this.changeLang, lang: this.state.lang})}*/}
+                    {/*</div>*/}
 
                     <Route path="/" exact component={IndexPage}/>
                     <Route path="/gallery" exact component={Gallery}/>
+                    <Route path="/about" exact component={About}/>
+                    <Route path="/articles" exact component={Articles}/>
 
                     <Route path="/admin" exact component={DashBoard}/>
                     <Route path="/admin/login" component={Login}/>
@@ -67,6 +74,11 @@ class App extends React.Component {
 
                     <Route path="/admin/gallery" exact component={GalleryAdmin}/>
                     <Route path="/admin/gallery/add" component={GalleryAdd}/>
+
+                    <Route path="/admin/about" exact component={AboutEdit}/>
+
+                    <Route path="/admin/articles" exact component={ArticlesAdmin}/>
+                    <Route path="/admin/articles/add" exact component={ArticleAdd}/>
 
                     <Footer/>
                 </BrowserRouter>

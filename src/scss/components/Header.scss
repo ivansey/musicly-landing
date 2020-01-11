@@ -1,0 +1,101 @@
+@import "../_colors";
+
+.header {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  min-height: 100%;
+  position: relative;
+  font-size: 2em;
+  background: url("https://99px.ru/sstorage/53/2012/03/tmb_37090_1500.jpg");
+  background-size: cover;
+  background-attachment: fixed;
+
+  & .arrowsSVG {
+    width: 50px;
+    animation: miniChangeOpacity 2s infinite ease-in-out;
+    position: relative;
+    display: block;
+  }
+
+  & .title {
+    color: $headerTextColor;
+    font-size: 4em;
+    font-weight: bold;
+  }
+
+  @media (max-width: 768px) {
+    & {
+      & .title {
+        font-size: 2em;
+      }
+    }
+  }
+}
+
+.topBar {
+  height: max-content;
+  width: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  color: #fff;
+
+  & .menu {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    text-transform: uppercase;
+    font-weight: bold;
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
+
+    & a {
+      font-size: initial !important;
+      color: #fff;
+      text-decoration: none;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding-left: 5px;
+      padding-right: 5px;
+
+      &:hover {
+        color: #6d6d6d;
+        text-decoration: #6d6d6d solid underline;
+      }
+
+      &:focus {
+        color: #6d6d6d;
+        text-decoration: #6d6d6d solid underline;
+      }
+    }
+
+    & select {
+      padding-left: 5px;
+      padding-right: 5px;
+      border: 0;
+      font-size: initial !important;
+      font-weight: bold;
+      background: none;
+      color: #fff;
+
+      &:hover {
+        color: #6d6d6d;
+        text-decoration: #6d6d6d solid underline;
+      }
+
+      &:active {
+        color: #6d6d6d;
+        text-decoration: #6d6d6d solid underline;
+      }
+    }
+  }
+}

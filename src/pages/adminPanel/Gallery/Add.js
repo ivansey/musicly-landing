@@ -8,7 +8,7 @@ class GalleryAdd extends React.Component {
         super(props);
 
         this.state = {
-            type: "",
+            type: "photo",
             alt: "",
             src: "",
             response: null,

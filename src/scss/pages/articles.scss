@@ -1,0 +1,41 @@
+@import "../_colors";
+
+.miniArticles {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+.article {
+  width: 45%;
+  border: 1px solid $borderColor;
+  display: flex;
+  flex-direction: column-reverse;
+  margin-bottom: 20px;
+
+  & .text {
+    margin-top: 5px;
+    text-transform: uppercase;
+    font-weight: bold;
+    padding: 10px;
+
+    & .title {
+      font-size: 1.2em;
+      margin-bottom: 5px;
+      text-align: left;
+    }
+  }
+
+  & img {
+    height: 245px;
+    width: 100%;
+    object-fit: cover;
+    border-bottom: 1px solid $borderColor;
+  }
+
+  @media (max-width: 680px) {
+    & {
+      width: 100%;
+    }
+  }
+}

@@ -1,0 +1,42 @@
+@import "pages/articles";
+@import "pages/gallery";
+
+.page {
+  margin-top: 40px;
+
+  & .title {
+    text-align: center;
+  }
+
+  & .block {
+    margin: 40px;
+  }
+
+  @media (max-width: 680px) {
+    & {
+      & .block {
+        margin-left: 10px;
+        margin-right: 10px;
+      }
+    }
+  }
+}
+
+.fixedImage {
+  padding-top: 100px;
+  padding-bottom: 100px;
+
+  & p {
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 3em;
+    text-align: center;
+  }
+
+  &#fi-1 {
+    background: url("https://i.pinimg.com/564x/96/f7/ae/96f7aec23b0b83638168934fbaf08513.jpg");
+    background-attachment: fixed;
+    background-size: cover;
+    color: #fff;
+  }
+}

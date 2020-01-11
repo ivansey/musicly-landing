@@ -5,6 +5,8 @@ import {withRouter} from "react-router";
 import {Link} from "react-router-dom";
 import {TranslatableText} from "../App";
 
+import ArrowDown from "../down.svg";
+
 let menu = (props) => {
     return <div className="menu">
         <Link to="/"><p>
@@ -82,6 +84,10 @@ let menu = (props) => {
 class Header extends React.Component {
     render() {
         return <div className="header">
+            <div className="topBar">
+                {menu({changeLang: this.props.changeLang, lang: this.props.lang})}
+            </div>
+
             <p className="title" onClick={() => this.props.history.push("/")}>
                 <TranslatableText dictionary={{
                     EN: "TITLE",
@@ -89,6 +95,8 @@ class Header extends React.Component {
                     CH: "TITLE",
                 }}/>
             </p>
+
+            <object className="arrowsSVG" data={ArrowDown} type="image/svg+xml"></object>
         </div>
     }
 }

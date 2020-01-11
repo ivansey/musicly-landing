@@ -1,9 +1,15 @@
 let mongoose = require('mongoose');
 
 let aboutSchema = new mongoose.Schema ({
-    name: String,
-    description: String,
-    bio: String,
+    nameEN: String,
+    nameRU: String,
+    nameCH: String,
+    descriptionEN: String,
+    descriptionRU: String,
+    descriptionCH: String,
+    bioEN: String,
+    bioRU: String,
+    bioCH: String,
 });
 
 let aboutModel = mongoose.model("about", aboutSchema);

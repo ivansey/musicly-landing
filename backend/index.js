@@ -12,6 +12,8 @@ mongoose.connect("mongodb://localhost/landing");
 let usersModel = require('./models/users');
 let userSessionModel = require('./models/userSession');
 let galleryModel = require("./models/gallery");
+let aboutModel = require("./models/about");
+let newsModel = require("./models/news");
 
 let app = express();
 
@@ -19,6 +21,8 @@ app.use(bodyParser());
 app.use(fileUpload());
 app.use(cors());
 app.use(express.static("storage"));
+
+
 
 app.post("/api/v1/users/reg", (req, res) => {
     usersModel.find({email: req.body.email}).then(data => {
@@ -103,6 +107,8 @@ app.post("/api/v1/users/auth/get", (req, res) => {
     });
 });
 
+
+
 app.post("/api/v1/gallery/get", (req, res) => {
     galleryModel.findOne({_id: req.body._id}).then((data) => {
         if (data.src === undefined) {
@@ -161,6 +167,114 @@ app.post("/api/v1/gallery/delete", (req, res) => {
     });
 });
 
+
+
+app.post("/api/v1/about/get", (req, res) => {
+    aboutModel.find({}).then((data) => {
+        return res.json({
+            response: "OK", data: data[0]
+        })
+    })
+});
+
+app.post("/api/v1/about/edit", (req, res) => {
+    userSessionModel.find({token: req.body.token}).then(data => {
+        if (data.length === 0) {
+            return res.json({response: "NOT_ACCESS"});
+        }
+
+        console.log(req.body);
+
+        aboutModel.findByIdAndUpdate(req.body._id, {
+            nameEN: req.body.nameEN,
+            nameRU: req.body.nameRU,
+            nameCH: req.body.nameCH,
+            descriptionEN: req.body.descriptionEN,
+            descriptionRU: req.body.descriptionRU,
+            descriptionCH: req.body.descriptionCH,
+            bioEN: req.body.bioEN,
+            bioRU: req.body.bioRU,
+            bioCH: req.body.bioCH,
+        }).then(() => {
+            return res.json({response: "OK"})
+        }).catch((err) => {
+            return res.status(500).send(err)
+        });
+    }).catch((err) => {
+        return res.status(500).send(err)
+    });
+});
+
+
+
+app.post("/api/v1/news/get", (req, res) => {
+    newsModel.findOne({_id: req.body._id}).then((data) => {
+        if (data.src === undefined) {
+            return res.json({
+                response: "NOT_FOUND", data: {}
+            });
+        }
+
+        return res.json({
+            response: "OK", data: data
+        })
+    })
+});
+
+app.post("/api/v1/news/getAll", (req, res) => {
+    newsModel.find({}).limit(req.body.limit).sort({_id: -1}).then((data) => {
+        if (data.length === 0) {
+            return res.json({
+                response: "NOT_FOUND", data: [{}]
+            });
+        }
+
+        return res.json({
+            response: "OK", data: data
+        })
+    })
+});
+
+app.post("/api/v1/news/add", (req, res) => {
+    userSessionModel.find({token: req.body.token}).then(data => {
+        if (data.length === 0) {
+            return res.json({response: "NOT_ACCESS"});
+        }
+
+        let news = new newsModel({
+            titleEN: req.body.titleEN,
+            titleRU: req.body.titleRU,
+            titleCH: req.body.titleCH,
+            descEN: req.body.descEN,
+            descRU: req.body.descRU,
+            descCH: req.body.descCH,
+            textEN: req.body.textEN,
+            textRU: req.body.textRU,
+            textCH: req.body.textCH,
+            image: req.body.image,
+            date: new Date(Date.now()),
+        });
+        news.save();
+        return res.json({response: "DONE"});
+    });
+});
+
+app.post("/api/v1/news/delete", (req, res) => {
+    userSessionModel.find({token: req.body.token}).then(data => {
+        if (data.length === 0) {
+            return res.json({response: "NOT_ACCESS"});
+        }
+
+        newsModel.findByIdAndRemove(req.body._id).then((data) => {
+            return res.json({response: "DONE"});
+        }).catch((err) => {
+            return res.status(500).send(err);
+        });
+    });
+});
+
+
+
 app.post("/api/v1/storage/image/upload", (req, res) => {
     let file = req.files.file;
 
@@ -191,5 +305,30 @@ app.listen(PORT, () => {
             });
         }
     });
+
+    aboutModel.find({}).then((data) => {
+        if (data.length === 0) {
+            console.error("Not found about information\nCreate default about information...");
+            let about = new aboutModel({
+                name: "Person",
+                description: "Person desc",
+                bioEN: "String #1\n" +
+                    "String #2\n" +
+                    "String #3\n",
+                bioRU: "String #1\n" +
+                    "String #2\n" +
+                    "String #3\n",
+                bioCH: "String #1\n" +
+                    "String #2\n" +
+                    "String #3\n",
+            });
+            about.save().then(() => {
+                console.log("Add about information");
+            }).catch((err) => {
+                console.error("Error add about information\n" + err);
+            });
+        }
+    });
+
     console.log("Server started on port " + PORT);
 });

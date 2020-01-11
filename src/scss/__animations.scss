@@ -1,0 +1,14 @@
+@keyframes miniChangeOpacity {
+  from {
+    opacity: 1;
+    top: 0;
+  }
+  50% {
+    opacity: 0.1;
+    top: 25px;
+  }
+  to {
+    opacity: 1;
+    top: 0;
+  }
+}
