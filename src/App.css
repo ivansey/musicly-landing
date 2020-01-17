@@ -34,7 +34,6 @@ html, body {
   min-height: 100%;
   position: relative;
   font-size: 2em;
-  background: url("https://99px.ru/sstorage/53/2012/03/tmb_37090_1500.jpg");
   background-size: cover;
   background-attachment: fixed; }
   .header .body {
@@ -63,7 +62,8 @@ html, body {
   .header .body .title {
     color: #000;
     font-size: 4em;
-    font-weight: bold; }
+    font-weight: bold;
+    text-align: center; }
   @media (max-width: 768px) {
     .header .title {
       font-size: 2em; } }
@@ -106,7 +106,7 @@ html, body {
     .topBar .menu p.link {
       font-size: initial !important;
       height: 20px;
-      color: #fff;
+      color: #000;
       text-decoration: none;
       text-align: center;
       display: flex;
@@ -273,5 +273,9 @@ a {
     color: #6d6d6d;
     text-decoration: #6d6d6d solid underline;
     cursor: pointer; }
+
+.textBig {
+  max-width: 100%;
+  white-space: normal; }
 
 /*# sourceMappingURL=App.css.map */

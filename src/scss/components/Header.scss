@@ -11,7 +11,6 @@
   min-height: 100%;
   position: relative;
   font-size: 2em;
-  background: url("https://99px.ru/sstorage/53/2012/03/tmb_37090_1500.jpg");
   background-size: cover;
   background-attachment: fixed;
 
@@ -48,6 +47,7 @@
     color: $headerTextColor;
     font-size: 4em;
     font-weight: bold;
+    text-align: center;
   }
 
   @media (max-width: 768px) {
@@ -105,7 +105,7 @@
     & p.link {
       font-size: initial !important;
       height: 20px;
-      color: #fff;
+      color: $headerTextColor;
       text-decoration: none;
       text-align: center;
       display: flex;

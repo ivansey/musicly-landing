@@ -65,11 +65,13 @@ class About extends React.Component {
                                 </i>
                                 <br/>
                                 <br/>
+                                <div className="textBig">
                                 <TranslatableText dictionary={{
                                     EN: renderHTML(this.state.data.bioEN),
                                     RU: renderHTML(this.state.data.bioRU),
                                     CH: renderHTML(this.state.data.bioCH),
                                 }}/>
+                                </div>
                             </pre>
                             : null
                     }

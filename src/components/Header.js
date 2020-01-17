@@ -89,9 +89,17 @@ class Header extends React.Component {
 
                 <p className="title" onClick={() => this.props.history.push("/")}>
                     <TranslatableText dictionary={{
-                        EN: "TITLE",
-                        RU: "TITLE",
-                        CH: "TITLE",
+                        EN: "Volha Mezamuse",
+                        RU: "Volha Mezamuse",
+                        CH: "Volha Mezamuse",
+                    }}/>
+                </p>
+
+                <p className="subtitle" onClick={() => this.props.history.push("/")}>
+                    <TranslatableText dictionary={{
+                        EN: "Professional violinist performer",
+                        RU: "Professional violinist performer",
+                        CH: "Professional violinist performer",
                     }}/>
                 </p>
 
