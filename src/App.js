@@ -46,9 +46,10 @@ class App extends React.Component {
         this.changeLang = this.changeLang.bind(this);
     }
 
-    changeLang = (e) => {
-        this.setState({lang: e.target.value});
-        cookies.save("lang", e.target.value, {expires: new Date(Date.now()+60*60*60*24*30*12*1000), path: "/"});
+    changeLang = (value) => {
+        console.log(value);
+        this.setState({lang: value});
+        cookies.save("lang", value, {expires: new Date(Date.now()+60*60*60*24*30*12*1000), path: "/"});
     };
 
     render() {

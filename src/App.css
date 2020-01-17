@@ -24,6 +24,7 @@ html, body {
   height: 100%; }
 
 .header {
+  z-index: -2;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
@@ -36,13 +37,31 @@ html, body {
   background: url("https://99px.ru/sstorage/53/2012/03/tmb_37090_1500.jpg");
   background-size: cover;
   background-attachment: fixed; }
-  .header .arrowsSVG {
+  .header .body {
+    overflow: hidden;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly; }
+  .header .video {
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    -o-object-fit: cover;
+    object-fit: cover; }
+  .header .body .arrowsSVG {
     width: 50px;
     animation: miniChangeOpacity 2s infinite ease-in-out;
     position: relative;
     display: block; }
-  .header .title {
-    color: #fff;
+  .header .body .title {
+    color: #000;
     font-size: 4em;
     font-weight: bold; }
   @media (max-width: 768px) {
@@ -57,7 +76,7 @@ html, body {
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
-  color: #fff; }
+  color: #000; }
   .topBar .menu {
     display: flex;
     width: 100%;
@@ -69,7 +88,8 @@ html, body {
     text-align: center; }
     .topBar .menu a {
       font-size: initial !important;
-      color: #fff;
+      height: 20px;
+      color: #000;
       text-decoration: none;
       text-align: center;
       display: flex;
@@ -83,7 +103,25 @@ html, body {
       .topBar .menu a:focus {
         color: #6d6d6d;
         text-decoration: #6d6d6d solid underline; }
+    .topBar .menu p.link {
+      font-size: initial !important;
+      height: 20px;
+      color: #fff;
+      text-decoration: none;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding-left: 5px;
+      padding-right: 5px; }
+      .topBar .menu p.link:hover {
+        color: #6d6d6d;
+        text-decoration: #6d6d6d solid underline; }
+      .topBar .menu p.link:focus {
+        color: #6d6d6d;
+        text-decoration: #6d6d6d solid underline; }
     .topBar .menu select {
+      height: 20px;
       padding-left: 5px;
       padding-right: 5px;
       border: 0;
@@ -102,6 +140,9 @@ html, body {
   margin: 40px;
   display: flex;
   font-size: 0.75em; }
+  .footer * {
+    margin-left: 10px;
+    margin-right: 10px; }
 
 .miniArticles {
   display: flex;
@@ -215,6 +256,21 @@ button {
   transition: all .3s; }
   button:hover {
     background: #6d6d6d;
+    text-decoration: #6d6d6d solid underline;
+    cursor: pointer; }
+  @media (max-width: 660px) {
+    button {
+      width: 100px; } }
+
+a {
+  color: #000;
+  text-decoration: none; }
+  a:hover {
+    color: #6d6d6d;
+    text-decoration: #6d6d6d solid underline;
+    cursor: pointer; }
+  a:focus {
+    color: #6d6d6d;
     text-decoration: #6d6d6d solid underline;
     cursor: pointer; }
 

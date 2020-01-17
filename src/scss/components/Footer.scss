@@ -2,4 +2,9 @@
   margin: 40px;
   display: flex;
   font-size: 0.75em;
+
+  & * {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
 }

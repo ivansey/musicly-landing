@@ -14,6 +14,7 @@ let userSessionModel = require('./models/userSession');
 let galleryModel = require("./models/gallery");
 let aboutModel = require("./models/about");
 let newsModel = require("./models/news");
+let mediaModel = require("./models/media");
 
 let app = express();
 
@@ -21,7 +22,6 @@ app.use(bodyParser());
 app.use(fileUpload());
 app.use(cors());
 app.use(express.static("storage"));
-
 
 
 app.post("/api/v1/users/reg", (req, res) => {
@@ -108,9 +108,8 @@ app.post("/api/v1/users/auth/get", (req, res) => {
 });
 
 
-
 app.post("/api/v1/gallery/get", (req, res) => {
-    galleryModel.findOne({_id: req.body._id}).then((data) => {
+    galleryModel.findById(req.body._id).then((data) => {
         if (data.src === undefined) {
             return res.json({
                 response: "NOT_FOUND", data: [{}]
@@ -168,7 +167,6 @@ app.post("/api/v1/gallery/delete", (req, res) => {
 });
 
 
-
 app.post("/api/v1/about/get", (req, res) => {
     aboutModel.find({}).then((data) => {
         return res.json({
@@ -206,9 +204,8 @@ app.post("/api/v1/about/edit", (req, res) => {
 });
 
 
-
 app.post("/api/v1/news/get", (req, res) => {
-    newsModel.findOne({_id: req.body._id}).then((data) => {
+    newsModel.findById(req.body._id).then((data) => {
         if (data.src === undefined) {
             return res.json({
                 response: "NOT_FOUND", data: {}
@@ -273,6 +270,78 @@ app.post("/api/v1/news/delete", (req, res) => {
     });
 });
 
+
+app.post("/api/v1/media/get", (req, res) => {
+    mediaModel.findById(req.body._id).then((data) => {
+        if (data.src === undefined) {
+            return res.json({
+                response: "NOT_FOUND", data: {}
+            });
+        }
+
+        return res.json({
+            response: "OK", data: data
+        })
+    })
+});
+
+app.post("/api/v1/media/getAll", (req, res) => {
+    newsModel.find({}).limit(req.body.limit).sort({_id: -1}).then((data) => {
+        if (data.length === 0) {
+            return res.json({
+                response: "NOT_FOUND", data: [{}]
+            });
+        }
+
+        return res.json({
+            response: "OK", data: data
+        })
+    })
+});
+
+app.post("/api/v1/media/add", (req, res) => {
+    userSessionModel.find({token: req.body.token}).then(data => {
+        if (data.response === "NOT_TOKEN") {
+            return res.json({response: "USER_FOUND", data: {}});
+        }
+
+        let media = new mediaModel({
+            titleEN: req.body.titleEN,
+            titleRU: req.body.titleRU,
+            titleCH: req.body.titleCH,
+            descEN: req.body.descEN,
+            descRU: req.body.descRU,
+            descCH: req.body.descCH,
+            textEN: req.body.textEN,
+            textRU: req.body.textRU,
+            textCH: req.body.textCH,
+            youtubeURL: req.body.youtubeURL,
+            yMusicURL: req.body.yMusicURL,
+            iTunesURL: req.body.iTunesURL,
+            googlePlayURL: req.body.googlePlayURL,
+            spotifyURL: req.body.spotifyURL,
+            boomURL: req.body.boomURL,
+            image: req.body.image,
+            date: new Date(Date.now()),
+        });
+        media.save();
+        return res.json({response: "DONE"});
+    });
+});
+
+app.post("/api/v1/media/delete", (req, res) => {
+    userSessionModel.find({token: req.body.token}).then(data => {
+        if (data.response === "NOT_TOKEN") {
+            return res.json({response: "USER_FOUND", data: {}});
+        }
+
+        newsModel.findByIdAndRemove(req.body._id).then((data) => {
+            return res.json({response: "DONE"});
+        }).catch((err) => {
+            return res.status(500).send(err);
+        });
+    });
+});
 
 
 app.post("/api/v1/storage/image/upload", (req, res) => {
