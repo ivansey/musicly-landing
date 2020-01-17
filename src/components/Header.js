@@ -16,7 +16,7 @@ let menu = (props) => {
                     CH: "首页",
                 }}/>
             </p></Link>
-            <p>/</p>
+            
             <Link to="/about"><p>
                 <TranslatableText dictionary={{
                     EN: "About",
@@ -24,7 +24,7 @@ let menu = (props) => {
                     CH: "关于我",
                 }}/>
             </p></Link>
-            <p>/</p>
+            
             <Link to="/projects"><p>
                 <TranslatableText dictionary={{
                     EN: "Projects",
@@ -32,7 +32,7 @@ let menu = (props) => {
                     CH: "关于我",
                 }}/>
             </p></Link>
-            <p>/</p>
+            
             <Link to="/media"><p>
                 <TranslatableText dictionary={{
                     EN: "Repertoire",
@@ -40,7 +40,7 @@ let menu = (props) => {
                     CH: "剧目",
                 }}/>
             </p></Link>
-            <p>/</p>
+            
             <Link to="/gallery"><p>
                 <TranslatableText dictionary={{
                     EN: "Gallery",
@@ -48,7 +48,7 @@ let menu = (props) => {
                     CH: "艺廊",
                 }}/>
             </p></Link>
-            <p>/</p>
+            
             <Link to="/backstage"><p>
                 <TranslatableText dictionary={{
                     EN: "Backstage",
@@ -56,7 +56,7 @@ let menu = (props) => {
                     CH: "后台",
                 }}/>
             </p></Link>
-            <p>/</p>
+            
             <Link to="/contacts"><p>
                 <TranslatableText dictionary={{
                     EN: "Contact",
@@ -64,7 +64,7 @@ let menu = (props) => {
                     CH: "联络资料",
                 }}/>
             </p></Link>
-            <p>/</p>
+            
             <Link to="/social"><p>
                 <TranslatableText dictionary={{
                     EN: "Social",
@@ -72,7 +72,7 @@ let menu = (props) => {
                     CH: "社交网络",
                 }}/>
             </p></Link>
-            <p>/</p>
+            
             <p className="link" onClick={() => {props.changeLang("EN")}}>EN</p>
             <p className="link" onClick={() => {props.changeLang("RU")}}>RU</p>
             <p className="link" onClick={() => {props.changeLang("CH")}}>CH</p>
@@ -105,7 +105,7 @@ class Header extends React.Component {
 
                 <object className="arrowsSVG" data={ArrowDown} type="image/svg+xml"></object>
             </div>
-            <video src="videoHeader.mp4" width="100%" height="100%" loop="" muted="" autoplay="" className="video"/>
+            <video src="/videoHeader.mp4" width="100%" height="100%" loop="true" muted="true" autoplay="true" preload="" className="video"/>
         </div>
     }
 }
