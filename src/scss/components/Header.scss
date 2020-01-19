@@ -23,7 +23,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
-    background: rgba(0, 0, 0, 0.6);
+    background: rgba(0, 0, 0, 0.4);
   }
 
   & .video {
@@ -49,11 +49,14 @@
     font-size: 2.5em;
     font-weight: bold;
     text-align: center;
+    letter-spacing: -0.05em;
+    margin-top: 3em;
   }
 
   & .body .subtitle {
     font-size: 0.7em;
     color: $headerTextColor;
+    text-align: center;
   }
 
   @media (max-width: 768px) {

@@ -45,7 +45,7 @@ html, body {
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
-    background: rgba(0, 0, 0, 0.6); }
+    background: rgba(0, 0, 0, 0.4); }
   .header .video {
     position: absolute;
     z-index: -1;
@@ -64,10 +64,13 @@ html, body {
     color: #fff;
     font-size: 2.5em;
     font-weight: bold;
-    text-align: center; }
+    text-align: center;
+    letter-spacing: -0.05em;
+    margin-top: 3em; }
   .header .body .subtitle {
     font-size: 0.7em;
-    color: #fff; }
+    color: #fff;
+    text-align: center; }
   @media (max-width: 768px) {
     .header .body .title {
       font-size: 1.2em; } }
