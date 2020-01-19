@@ -73,9 +73,9 @@ let menu = (props) => {
                 }}/>
             </p></Link>
             
-            <p className="link" onClick={() => {props.changeLang("EN")}}>EN</p>
-            <p className="link" onClick={() => {props.changeLang("RU")}}>RU</p>
-            <p className="link" onClick={() => {props.changeLang("CH")}}>CH</p>
+            <p className="link" onClick={() => {props.changeLang("EN")}}><img src="/gb.png" alt=""/></p>
+            <p className="link" onClick={() => {props.changeLang("RU")}}><img src="/ru.png" alt=""/></p>
+            <p className="link" onClick={() => {props.changeLang("CH")}}><img src="/ch.png" alt=""/></p>
         </div>
 };
 

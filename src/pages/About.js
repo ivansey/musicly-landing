@@ -31,13 +31,6 @@ class About extends React.Component {
     render() {
         return <div className="page">
             <div className="block">
-                <h2 className="title">
-                    <TranslatableText dictionary={{
-                        EN: "ABOUT ME",
-                        RU: "ОБО МНЕ",
-                        CH: "艺廊",
-                    }}/>
-                </h2>
                 <br/>
                 <div className="text">
                     {
@@ -65,13 +58,12 @@ class About extends React.Component {
                                 </i>
                                 <br/>
                                 <br/>
-                                <div className="textBig">
                                 <TranslatableText dictionary={{
                                     EN: renderHTML(this.state.data.bioEN),
                                     RU: renderHTML(this.state.data.bioRU),
                                     CH: renderHTML(this.state.data.bioCH),
                                 }}/>
-                                </div>
+
                             </pre>
                             : null
                     }

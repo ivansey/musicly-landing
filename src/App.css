@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Noto+Sans:400,400i,700&display=swap&subset=cyrillic");
+@import url("https://fonts.googleapis.com/css?family=Marck+Script&display=swap&subset=cyrillic,latin-ext");
 @keyframes miniChangeOpacity {
   from {
     opacity: 1;
@@ -121,6 +122,8 @@ html, body {
       justify-content: center;
       padding-left: 5px;
       padding-right: 5px; }
+      .topBar .menu p.link img {
+        width: 1.5em; }
       .topBar .menu p.link:hover {
         color: #6d6d6d;
         text-decoration: #6d6d6d solid underline; }
@@ -251,7 +254,7 @@ html, body {
 
 * {
   outline: none;
-  font-family: "Noto Sans", sans-serif; }
+  font-family: "Marck Script", sans-serif; }
 
 body {
   background: rgba(255, 254, 0, 0.3); }
@@ -284,8 +287,8 @@ a {
     text-decoration: #6d6d6d solid underline;
     cursor: pointer; }
 
-.textBig {
-  max-width: 100%;
-  white-space: normal; }
+pre {
+  width: 100%;
+  white-space: pre-line; }
 
 /*# sourceMappingURL=App.css.map */

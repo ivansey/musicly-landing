@@ -5,9 +5,11 @@
 @import "scss/_pages";
 @import "scss/_colors";
 
+@import url('https://fonts.googleapis.com/css?family=Marck+Script&display=swap&subset=cyrillic,latin-ext');
+
 * {
   outline: none;
-  font-family: "Noto Sans", sans-serif;
+  font-family: "Marck Script", sans-serif;
 }
 
 body {
@@ -53,7 +55,7 @@ a {
   }
 }
 
-.textBig {
-  max-width: 100%;
-  white-space: normal;
+pre {
+  width: 100%;
+  white-space: pre-line;
 }

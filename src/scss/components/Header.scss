@@ -124,6 +124,10 @@
       padding-left: 5px;
       padding-right: 5px;
 
+      & img {
+        width: 1.5em;
+      }
+
       &:hover {
         color: #6d6d6d;
         text-decoration: #6d6d6d solid underline;
