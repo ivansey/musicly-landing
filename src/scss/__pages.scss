@@ -3,6 +3,7 @@
 
 .page {
   margin-top: 40px;
+  padding-right: 15%;
 
   & .title {
     text-align: center;
@@ -10,6 +11,12 @@
 
   & .block {
     margin: 40px;
+  }
+
+  @media (max-width: 947px) {
+    & {
+      padding: 0;
+    }
   }
 
   @media (max-width: 680px) {

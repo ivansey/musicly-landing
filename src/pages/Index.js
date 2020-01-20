@@ -111,16 +111,6 @@ class IndexPage extends React.Component {
                     {this.returnListArticles()}
                 </div>
             </div>
-
-            <div className="fixedImage" id="fi-1">
-                <p>
-                    <TranslatableText dictionary={{
-                        EN: "AZA#ZLO - TOP",
-                        RU: "Azazin - топ",
-                        CH: "AZA#ZLO - 最佳",
-                    }}/>
-                </p>
-            </div>
         </div>
     }
 }
