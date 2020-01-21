@@ -108,7 +108,7 @@ class RepertoireEdit extends React.Component {
                             CH: "艺廊 EN",
                         }}/>
                     </label>
-                    <input type="text" name="descriptionEN" defaultValue={this.state.data.descriptionEN}
+                    <textarea cols="30" rows="10" name="descriptionEN" defaultValue={this.state.data.descriptionEN}
                            onChange={this.handleDescriptionEN}/>
                     <br/>
                     <label htmlFor="descriptionRU">
@@ -118,7 +118,7 @@ class RepertoireEdit extends React.Component {
                             CH: "艺廊 RU",
                         }}/>
                     </label>
-                    <input type="text" name="descriptionRU" defaultValue={this.state.data.descriptionRU}
+                    <textarea cols="30" rows="10" name="descriptionRU" defaultValue={this.state.data.descriptionRU}
                            onChange={this.handleDescriptionRU}/>
                     <br/>
                     <label htmlFor="descriptionCH">
@@ -128,7 +128,7 @@ class RepertoireEdit extends React.Component {
                             CH: "艺廊 CH",
                         }}/>
                     </label>
-                    <input type="text" name="descriptionCH" defaultValue={this.state.data.descriptionCH}
+                    <textarea cols="30" rows="10" name="descriptionCH" defaultValue={this.state.data.descriptionCH}
                            onChange={this.handleDescriptionCH}/>
                            <br/>
                     <form onSubmit={this.handleUploadImage}>

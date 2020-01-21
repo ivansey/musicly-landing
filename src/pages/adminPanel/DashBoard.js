@@ -21,7 +21,8 @@ class DashBoard extends React.Component {
             <br/>
             <Link to="/admin/gallery">Управление галереей</Link>
             <Link to="/admin/about">Управление информацией о себе</Link>
-            <Link to="/admin/articles">Управление новостями</Link>
+            <Link to="/admin/repertoire">Управление репертуаром</Link>
+            {/*<Link to="/admin/articles">Управление новостями</Link>*/}
             <Link to="/admin/logout">Выход с аккаунта</Link>
         </div>
     }
