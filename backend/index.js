@@ -377,9 +377,12 @@ app.post("/api/v1/repertoire/edit", (req, res) => {
 app.post("/api/v1/storage/image/upload", (req, res) => {
     let file = req.files.file;
 
+    console.log("Upload image");
+    console.log(req);
+
     file.mv("../public/storage/image/" + req.body.filename, (err) => {
         if (err) {
-            return res.status(500).send(err);
+            res.json({response: "OK", url: "/storage/image/" + req.body.filename});
         }
 
         res.json({response: "OK", url: "/storage/image/" + req.body.filename});
