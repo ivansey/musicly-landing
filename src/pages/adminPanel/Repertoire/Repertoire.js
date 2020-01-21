@@ -131,7 +131,7 @@ class RepertoireEdit extends React.Component {
                     <textarea cols="30" rows="10" name="descriptionCH" defaultValue={this.state.data.descriptionCH}
                            onChange={this.handleDescriptionCH}/>
                            <br/>
-                    <form onSubmit={this.handleUploadImage}>
+                    <form>
                         <div className="card-body">
                             <div className="form-group">
                                 <label htmlFor="photo">Фото</label>
@@ -155,7 +155,7 @@ class RepertoireEdit extends React.Component {
                                 </div>
                             </div>
                         </div>
-                        <button className="btn btn-primary card-button-bottom">Загрузка фото</button>
+                        <button onClick={this.handleUploadImage} type="button" className="btn btn-primary card-button-bottom">Загрузка фото</button>
                     </form>
                     <br/>
                     {
