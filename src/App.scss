@@ -14,7 +14,7 @@
 }
 
 body {
-  //background: rgba(255, 254, 0, 0.3);
+  background: #f1e9d2;
 
   & .before {
     position: fixed;
@@ -76,4 +76,5 @@ pre {
   font-family: "Marck Script", sans-serif;
   width: 100%;
   white-space: pre-line;
+  font-size: 1.2em;
 }

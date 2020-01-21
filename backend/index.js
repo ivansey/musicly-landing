@@ -15,6 +15,7 @@ let galleryModel = require("./models/gallery");
 let aboutModel = require("./models/about");
 let newsModel = require("./models/news");
 let mediaModel = require("./models/media");
+let repertoireModel = require("./models/repertoire");
 
 let app = express();
 
@@ -344,6 +345,35 @@ app.post("/api/v1/media/delete", (req, res) => {
 });
 
 
+app.post("/api/v1/repertoire/get", (req, res) => {
+    repertoireModel.find({}).then((data) => {
+        return res.json({
+            response: "OK", data: data[0]
+        })
+    })
+});
+
+app.post("/api/v1/repertoire/edit", (req, res) => {
+    userSessionModel.find({token: req.body.token}).then(data => {
+        if (data.length === 0) {
+            return res.json({response: "NOT_ACCESS"});
+        }
+
+        repertoireModel.findByIdAndUpdate(req.body._id, {
+            descriptionEN: req.body.descriptionEN,
+            descriptionRU: req.body.descriptionRU,
+            descriptionCH: req.body.descriptionCH,
+        }).then(() => {
+            return res.json({response: "OK"})
+        }).catch((err) => {
+            return res.status(500).send(err)
+        });
+    }).catch((err) => {
+        return res.status(500).send(err)
+    });
+});
+
+
 app.post("/api/v1/storage/image/upload", (req, res) => {
     let file = req.files.file;
 
@@ -395,6 +425,28 @@ app.listen(PORT, () => {
                 console.log("Add about information");
             }).catch((err) => {
                 console.error("Error add about information\n" + err);
+            });
+        }
+    });
+
+    repertoireModel.find({}).then((data) => {
+        if (data.length === 0) {
+            console.error("Not found repertoire information\nCreate default repertoire information...");
+            let repertoire = new repertoireModel({
+                descriptionEN: "String #1\n" +
+                    "String #2\n" +
+                    "String #3\n",
+                descriptionRU: "String #1\n" +
+                    "String #2\n" +
+                    "String #3\n",
+                descriptionCH: "String #1\n" +
+                    "String #2\n" +
+                    "String #3\n",
+            });
+            repertoire.save().then(() => {
+                console.log("Add repertoire information");
+            }).catch((err) => {
+                console.error("Error add repertoire information\n" + err);
             });
         }
     });

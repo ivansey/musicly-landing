@@ -33,7 +33,7 @@ let menu = (props, muteVideo, changeMuteVideo) => {
                 }}/>
             </p></Link>
             
-            <Link to="/media"><p>
+            <Link to="/repertoire"><p>
                 <TranslatableText dictionary={{
                     EN: "Repertoire",
                     RU: "Репертуар",
