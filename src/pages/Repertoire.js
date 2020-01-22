@@ -49,11 +49,11 @@ class Repertoire extends React.Component {
                                     }}/>
                                 </h2>
                                 <br/>
-                                    renderHTML(<TranslatableText dictionary={{
-                                        EN: this.state.data.descriptionEN,
-                                        RU: this.state.data.descriptionRU,
-                                        CH: this.state.data.descriptionCH,
-                                    }}/>)
+                                {<TranslatableText dictionary={{
+                                        EN: renderHTML(this.state.data.descriptionEN),
+                                        RU: renderHTML(this.state.data.descriptionRU),
+                                        CH: renderHTML(this.state.data.descriptionCH),
+                                    }}/>}
                             </pre>
                             : null
                     }
