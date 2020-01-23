@@ -21,6 +21,7 @@ import ArticlesAdmin from "./pages/adminPanel/Articles/Articles";
 import ArticleAdd from "./pages/adminPanel/Articles/Add";
 import Repertoire from "./pages/Repertoire";
 import RepertoireEdit from "./pages/adminPanel/Repertoire/Repertoire";
+import Backstage from "./pages/Backstage";
 
 const LanguageContext = React.createContext();
 const LanguageConsumer = LanguageContext.Consumer;
@@ -71,6 +72,7 @@ class App extends React.Component {
                     <Route path="/about" exact component={About}/>
                     <Route path="/repertoire" exact component={Repertoire}/>
                     <Route path="/articles" exact component={Articles}/>
+                    <Route path="/backstage" exact component={Backstage}/>
 
                     <Route path="/admin" exact component={DashBoard}/>
                     <Route path="/admin/login" component={Login}/>
