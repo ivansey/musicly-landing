@@ -100,7 +100,7 @@ class RepertoireEdit extends React.Component {
                     }}/>
                 </h2>
                 <br/>
-                <form>
+
                     <label htmlFor="descriptionEN">
                         <TranslatableText dictionary={{
                             EN: "Description EN",
@@ -131,7 +131,6 @@ class RepertoireEdit extends React.Component {
                     <textarea cols="30" rows="10" name="descriptionCH" defaultValue={this.state.data.descriptionCH}
                            onChange={this.handleDescriptionCH}/>
                            <br/>
-                    <form>
                         <div className="card-body">
                             <div className="form-group">
                                 <label htmlFor="photo">Фото</label>
@@ -156,7 +155,6 @@ class RepertoireEdit extends React.Component {
                             </div>
                         </div>
                         <button onClick={this.handleUploadImage} type="button" className="btn btn-primary card-button-bottom">Загрузка фото</button>
-                    </form>
                     <br/>
                     {
                         this.state.response === "OK"
@@ -177,7 +175,7 @@ class RepertoireEdit extends React.Component {
                             CH: "艺廊",
                         }}/>
                     </button>
-                </form>
+
             </div>
         </div>
     }
