@@ -85,7 +85,7 @@ class RepertoireEdit extends React.Component {
         data.append("filename", "image_" + Date.now() + ".jpg");
 
         axios.post("/api/v1/storage/image/upload", data).then((data) => {
-            this.setState({image: data.data.url, imageResponse: data.data.response}, () => console.log(this.state));
+            this.setState({image: data.data.url, imageResponse: data.data.response});
         });
     };
 
@@ -131,6 +131,7 @@ class RepertoireEdit extends React.Component {
                     <textarea cols="30" rows="10" name="descriptionCH" defaultValue={this.state.data.descriptionCH}
                            onChange={this.handleDescriptionCH}/>
                            <br/>
+                <form>
                         <div className="card-body">
                             <div className="form-group">
                                 <label htmlFor="photo">Фото</label>
@@ -148,13 +149,14 @@ class RepertoireEdit extends React.Component {
                                     }
                                     {
                                         this.state.imageResponse === "OK"
-                                            ? <div className="alert alert-success">Загружено. Вставте этот код в текст: {`\<img src="${this.state.image}" alt=""\/\>`} </div>
+                                            ? <div className="alert alert-success">Загружено. Вставте этот код в текст: {`<img src="${this.state.image}" alt=""/>`} </div>
                                             : null
                                     }
                                 </div>
                             </div>
                         </div>
-                        <button onClick={this.handleUploadImage} type="button" className="btn btn-primary card-button-bottom">Загрузка фото</button>
+                    <p onClick={(e) => {this.handleUploadImage(e)}}>Download</p>
+                </form>
                     <br/>
                     {
                         this.state.response === "OK"

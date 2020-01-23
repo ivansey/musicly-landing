@@ -265,7 +265,7 @@ class AboutEdit extends React.Component {
                                 </div>
                             </div>
                         </div>
-                        <button className="btn btn-primary card-button-bottom">Загрузка фото</button>
+                        <p onClick={(e) => {this.handleUploadImage(e)}}>Download</p>
                     </form>
                     <br/>
                     {

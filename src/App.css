@@ -307,5 +307,7 @@ pre {
   width: 100%;
   white-space: pre-line;
   font-size: 1.2em; }
+  pre img {
+    width: 100%; }
 
 /*# sourceMappingURL=App.css.map */
