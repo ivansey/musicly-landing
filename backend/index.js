@@ -4,6 +4,7 @@ let mongoose = require('mongoose');
 let md5 = require('md5');
 let cors = require('cors');
 let fileUpload = require("express-fileupload");
+let VKAPI = require("vksdk");
 
 const PORT = 3001;
 
@@ -13,9 +14,6 @@ let usersModel = require('./models/users');
 let userSessionModel = require('./models/userSession');
 let galleryModel = require("./models/gallery");
 let aboutModel = require("./models/about");
-let newsModel = require("./models/news");
-let mediaModel = require("./models/media");
-let repertoireModel = require("./models/repertoire");
 
 let app = express();
 
@@ -23,6 +21,9 @@ app.use(bodyParser());
 app.use(fileUpload());
 app.use(cors());
 app.use(express.static("storage"));
+
+
+
 
 
 app.post("/api/v1/users/reg", (req, res) => {
@@ -205,172 +206,44 @@ app.post("/api/v1/about/edit", (req, res) => {
 });
 
 
-app.post("/api/v1/news/get", (req, res) => {
-    newsModel.findById(req.body._id).then((data) => {
-        if (data.src === undefined) {
-            return res.json({
-                response: "NOT_FOUND", data: {}
+app.post("/api/v1/social/vk/posts/get/photo", (req, res) => {
+    let wall = [];
+    let VK = new VKAPI({
+        "appId"     : 7294417,
+        "appSecret" : "gkX5Ut6GLwv6f4yMlUKe",
+        "language"  : "ru"
+    });(async () => {
+        VK.on('serverTokenReady', function(_o) {
+            VK.setToken(_o.access_token);
+        });
+
+        VK.setSecureRequests(true);
+
+        VK.request('secure.getSMSHistory', {}, function(_dd) {
+            console.log(_dd);
+        });
+
+        await VK.setToken("f7b598f062ff35494ecc94020daa63d11fad33d36b57411c59f1840af6625d84724c63848fb9d083179d5");
+
+        VK.request("wall.get", {
+            "owner_id"  : 39697620,
+            "count"     : 50
+        }, (data) => {
+            data.response.items.map((post) => {
+                if (post.copy_history === undefined && post.attachments !== undefined) {
+                    post.attachments.map((photo) => {
+                        if (photo.type === "photo") {
+                            console.log(photo.photo.photo_1280);
+                            wall.push(photo.photo.photo_1280);
+                            console.log(wall);
+                        }
+                    })
+                }
+                // return res.json({data: wall, response: "DONE"})
             });
-        }
-
-        return res.json({
-            response: "OK", data: data
-        })
-    })
-});
-
-app.post("/api/v1/news/getAll", (req, res) => {
-    newsModel.find({}).limit(req.body.limit).sort({_id: -1}).then((data) => {
-        if (data.length === 0) {
-            return res.json({
-                response: "NOT_FOUND", data: [{}]
-            });
-        }
-
-        return res.json({
-            response: "OK", data: data
-        })
-    })
-});
-
-app.post("/api/v1/news/add", (req, res) => {
-    userSessionModel.find({token: req.body.token}).then(data => {
-        if (data.length === 0) {
-            return res.json({response: "NOT_ACCESS"});
-        }
-
-        let news = new newsModel({
-            titleEN: req.body.titleEN,
-            titleRU: req.body.titleRU,
-            titleCH: req.body.titleCH,
-            descEN: req.body.descEN,
-            descRU: req.body.descRU,
-            descCH: req.body.descCH,
-            textEN: req.body.textEN,
-            textRU: req.body.textRU,
-            textCH: req.body.textCH,
-            image: req.body.image,
-            date: new Date(Date.now()),
+            return res.json({data: wall, response: "DONE"})
         });
-        news.save();
-        return res.json({response: "DONE"});
-    });
-});
-
-app.post("/api/v1/news/delete", (req, res) => {
-    userSessionModel.find({token: req.body.token}).then(data => {
-        if (data.length === 0) {
-            return res.json({response: "NOT_ACCESS"});
-        }
-
-        newsModel.findByIdAndRemove(req.body._id).then((data) => {
-            return res.json({response: "DONE"});
-        }).catch((err) => {
-            return res.status(500).send(err);
-        });
-    });
-});
-
-
-app.post("/api/v1/media/get", (req, res) => {
-    mediaModel.findById(req.body._id).then((data) => {
-        if (data.src === undefined) {
-            return res.json({
-                response: "NOT_FOUND", data: {}
-            });
-        }
-
-        return res.json({
-            response: "OK", data: data
-        })
-    })
-});
-
-app.post("/api/v1/media/getAll", (req, res) => {
-    newsModel.find({}).limit(req.body.limit).sort({_id: -1}).then((data) => {
-        if (data.length === 0) {
-            return res.json({
-                response: "NOT_FOUND", data: [{}]
-            });
-        }
-
-        return res.json({
-            response: "OK", data: data
-        })
-    })
-});
-
-app.post("/api/v1/media/add", (req, res) => {
-    userSessionModel.find({token: req.body.token}).then(data => {
-        if (data.response === "NOT_TOKEN") {
-            return res.json({response: "USER_FOUND", data: {}});
-        }
-
-        let media = new mediaModel({
-            titleEN: req.body.titleEN,
-            titleRU: req.body.titleRU,
-            titleCH: req.body.titleCH,
-            descEN: req.body.descEN,
-            descRU: req.body.descRU,
-            descCH: req.body.descCH,
-            textEN: req.body.textEN,
-            textRU: req.body.textRU,
-            textCH: req.body.textCH,
-            youtubeURL: req.body.youtubeURL,
-            yMusicURL: req.body.yMusicURL,
-            iTunesURL: req.body.iTunesURL,
-            googlePlayURL: req.body.googlePlayURL,
-            spotifyURL: req.body.spotifyURL,
-            boomURL: req.body.boomURL,
-            image: req.body.image,
-            date: new Date(Date.now()),
-        });
-        media.save();
-        return res.json({response: "DONE"});
-    });
-});
-
-app.post("/api/v1/media/delete", (req, res) => {
-    userSessionModel.find({token: req.body.token}).then(data => {
-        if (data.response === "NOT_TOKEN") {
-            return res.json({response: "USER_FOUND", data: {}});
-        }
-
-        newsModel.findByIdAndRemove(req.body._id).then((data) => {
-            return res.json({response: "DONE"});
-        }).catch((err) => {
-            return res.status(500).send(err);
-        });
-    });
-});
-
-
-app.post("/api/v1/repertoire/get", (req, res) => {
-    repertoireModel.find({}).then((data) => {
-        return res.json({
-            response: "OK", data: data[0]
-        })
-    })
-});
-
-app.post("/api/v1/repertoire/edit", (req, res) => {
-    userSessionModel.find({token: req.body.token}).then(data => {
-        if (data.length === 0) {
-            return res.json({response: "NOT_ACCESS"});
-        }
-
-        repertoireModel.findByIdAndUpdate(req.body._id, {
-            descriptionEN: req.body.descriptionEN,
-            descriptionRU: req.body.descriptionRU,
-            descriptionCH: req.body.descriptionCH,
-        }).then(() => {
-            return res.json({response: "OK"})
-        }).catch((err) => {
-            return res.status(500).send(err)
-        });
-    }).catch((err) => {
-        return res.status(500).send(err)
-    });
+    })()
 });
 
 
@@ -428,28 +301,6 @@ app.listen(PORT, () => {
                 console.log("Add about information");
             }).catch((err) => {
                 console.error("Error add about information\n" + err);
-            });
-        }
-    });
-
-    repertoireModel.find({}).then((data) => {
-        if (data.length === 0) {
-            console.error("Not found repertoire information\nCreate default repertoire information...");
-            let repertoire = new repertoireModel({
-                descriptionEN: "String #1\n" +
-                    "String #2\n" +
-                    "String #3\n",
-                descriptionRU: "String #1\n" +
-                    "String #2\n" +
-                    "String #3\n",
-                descriptionCH: "String #1\n" +
-                    "String #2\n" +
-                    "String #3\n",
-            });
-            repertoire.save().then(() => {
-                console.log("Add repertoire information");
-            }).catch((err) => {
-                console.error("Error add repertoire information\n" + err);
             });
         }
     });
