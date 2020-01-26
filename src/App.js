@@ -22,6 +22,8 @@ import ArticleAdd from "./pages/adminPanel/Articles/Add";
 import Repertoire from "./pages/Repertoire";
 import RepertoireEdit from "./pages/adminPanel/Repertoire/Repertoire";
 import Backstage from "./pages/Backstage";
+import Contacts from "./pages/Contacts";
+import Social from "./pages/Social";
 
 const LanguageContext = React.createContext();
 const LanguageConsumer = LanguageContext.Consumer;
@@ -73,6 +75,8 @@ class App extends React.Component {
                     <Route path="/repertoire" exact component={Repertoire}/>
                     <Route path="/articles" exact component={Articles}/>
                     <Route path="/backstage" exact component={Backstage}/>
+                    <Route path="/contacts" exact component={Contacts}/>
+                    <Route path="/social" exact component={Social}/>
 
                     <Route path="/admin" exact component={DashBoard}/>
                     <Route path="/admin/login" component={Login}/>

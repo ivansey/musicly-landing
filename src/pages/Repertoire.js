@@ -1,45 +1,14 @@
 import React from "react";
 import {withRouter} from "react-router";
-import axios from "axios";
 import {TranslatableText} from "../App";
 
 class Repertoire extends React.Component {
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            data: {},
-            response: "LOADING",
-        };
-
-        this.getRepertoire = this.getRepertoire.bind(this);
-
-        this.getRepertoire();
-    }
-
-    getRepertoire = () => {
-        axios.post("/api/v1/repertoire/get", {}).then((data) => {
-            this.setState({
-                data: data.data.data,
-                response: data.data.response
-            });
-            console.log(data);
-        });
-    };
-
     render() {
         return <div className="page">
             <div className="block">
                 <br/>
                 <div className="text">
-                    {
-                        this.state.response === "LOADING"
-                            ? <p>Загрузка...</p>
-                            : null
-                    }
-                    {
-                        this.state.response === "OK"
-                            ? <pre>
+                    <pre>
                                 <h2>
                                     <TranslatableText dictionary={{
                                         EN: "Repertoire",
@@ -236,8 +205,6 @@ Z<br/>
 Z. Abreu "Tiko tico"<br/>
 Zh. Qiufeng "I love you"<br/>
                             </pre>
-                            : null
-                    }
                 </div>
             </div>
         </div>
