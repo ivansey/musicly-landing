@@ -1,5 +1,9 @@
 @import url("https://fonts.googleapis.com/css?family=Noto+Sans:400,400i,700&display=swap&subset=cyrillic");
 @import url("https://fonts.googleapis.com/css?family=Marck+Script&display=swap&subset=cyrillic,latin-ext");
+@import url("/Product Sans Bold.ttf");
+@import url("/Product Sans Bold Italic.ttf");
+@import url("/Product Sans Bold Italic.ttf");
+@import url("/Product Sans Bold Regular.ttf");
 @keyframes miniChangeOpacity {
   from {
     opacity: 1;
@@ -154,6 +158,20 @@ html, body {
     margin-left: 10px;
     margin-right: 10px; }
 
+.contactCard {
+  display: inline-block;
+  text-decoration: none;
+  padding: 20px;
+  color: #000;
+  border: 5px solid #000;
+  width: max-content;
+  margin: 5px; }
+  .contactCard .mdi {
+    margin-right: 5px; }
+  @media (max-width: 660px) {
+    .contactCard {
+      width: 100%; } }
+
 .miniArticles {
   display: flex;
   justify-content: space-evenly;
@@ -231,7 +249,13 @@ html, body {
   margin-top: 40px;
   padding-right: 15%; }
   .page .title {
-    text-align: center; }
+    font-size: 1.5em;
+    text-align: left !important;
+    font-family: "Marck Script", sans-serif; }
+  .page .subtitle {
+    font-size: 1.3em;
+    text-align: left !important;
+    font-family: "Marck Script", sans-serif; }
   .page .block {
     margin: 40px; }
   @media (max-width: 947px) {
@@ -258,7 +282,7 @@ html, body {
 
 * {
   outline: none;
-  font-family: "Noto Sans", sans-serif; }
+  font-family: "Product Sans", sans-serif; }
 
 body {
   background: #f1e9d2; }
@@ -307,7 +331,14 @@ pre {
   width: 100%;
   white-space: pre-line;
   font-size: 1.2em; }
+  pre .title {
+    font-size: 1.3em;
+    text-align: left !important;
+    font-family: "Marck Script", sans-serif; }
   pre img {
     width: 100%; }
+
+.mdi-reload {
+  text-align: center; }
 
 /*# sourceMappingURL=App.css.map */

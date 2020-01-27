@@ -9,7 +9,7 @@ class About extends React.Component {
         super(props);
 
         this.state = {
-            data: {},
+            data    : {},
             response: "LOADING",
         };
 
@@ -21,10 +21,9 @@ class About extends React.Component {
     getAbout = () => {
         axios.post("/api/v1/about/get", {}).then((data) => {
             this.setState({
-                data: data.data.data,
+                data    : data.data.data,
                 response: data.data.response
             });
-            console.log(data);
         });
     };
 
@@ -35,27 +34,27 @@ class About extends React.Component {
                 <div className="text">
                     {
                         this.state.response === "LOADING"
-                            ? <p>Загрузка...</p>
+                            ? <p><span className="mdi mdi-reload"/></p>
                             : null
                     }
                     {
                         this.state.response === "OK"
                             ? <pre>
-                                <h2>
+                                <p className="title">
                                     <TranslatableText dictionary={{
                                         EN: this.state.data.nameEN,
                                         RU: this.state.data.nameRU,
                                         CH: this.state.data.nameCH,
                                     }}/>
-                                </h2>
+                                </p>
                                 <br/>
-                                <i>
+                                <p className="subtitle">
                                     <TranslatableText dictionary={{
                                         EN: this.state.data.descriptionEN,
                                         RU: this.state.data.descriptionRU,
                                         CH: this.state.data.descriptionCH,
                                     }}/>
-                                </i>
+                                </p>
                                 <br/>
                                 <br/>
                                 <TranslatableText dictionary={{

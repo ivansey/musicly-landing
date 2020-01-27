@@ -1,10 +1,6 @@
 import React from "react";
 import {withRouter} from "react-router";
-import {Link} from "react-router-dom";
-import cookies from "react-cookies";
 import axios from "axios";
-import youtube from "youtube-player";
-import youtubeURLParser from "js-video-url-parser";
 import {TranslatableText} from "../App";
 
 class Articles extends React.Component {
@@ -12,16 +8,16 @@ class Articles extends React.Component {
         super(props);
 
         this.state = {
-            list: [{}],
-            response: "LOADING",
-            limit: 10,
-            limitStep: 10,
-            lengthData: 2,
+            list        : [{}],
+            response    : "LOADING",
+            limit       : 10,
+            limitStep   : 10,
+            lengthData  : 2,
         };
 
-        this.getList = this.getList.bind(this);
+        this.getList    = this.getList.bind(this);
         this.returnList = this.returnList.bind(this);
-        this.plusLimit = this.plusLimit.bind(this);
+        this.plusLimit  = this.plusLimit.bind(this);
 
         this.getList();
     }
@@ -29,10 +25,10 @@ class Articles extends React.Component {
     getList = () => {
         axios.post("/api/v1/news/getAll", {limit: this.state.limit}).then((data) => {
             this.setState({
-                list: data.data.data,
-                lengthData: data.data.data.length,
-                response: data.data.response
-            }, () => console.log(this.state));
+                list        : data.data.data,
+                lengthData  : data.data.data.length,
+                response    : data.data.response
+            });
         });
     };
 

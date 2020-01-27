@@ -6,11 +6,14 @@
 @import "scss/_colors";
 
 @import url('https://fonts.googleapis.com/css?family=Marck+Script&display=swap&subset=cyrillic,latin-ext');
+@import url('/Product Sans Bold.ttf');
+@import url('/Product Sans Bold Italic.ttf');
+@import url('/Product Sans Bold Italic.ttf');
+@import url('/Product Sans Bold Regular.ttf');
 
 * {
   outline: none;
-  //font-family: "Marck Script", sans-serif;
-  font-family: "Noto Sans", sans-serif;
+  font-family: "Product Sans", sans-serif;
 }
 
 body {
@@ -78,7 +81,17 @@ pre {
   white-space: pre-line;
   font-size: 1.2em;
 
+  & .title {
+    font-size: 1.3em;
+    text-align: left !important;
+    font-family: "Marck Script", sans-serif;
+  }
+
   & img {
     width: 100%;
   }
+}
+
+.mdi-reload {
+  text-align: center;
 }

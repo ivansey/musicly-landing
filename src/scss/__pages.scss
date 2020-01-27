@@ -6,7 +6,15 @@
   padding-right: 15%;
 
   & .title {
-    text-align: center;
+    font-size: 1.5em;
+    text-align: left !important;
+    font-family: "Marck Script", sans-serif;
+  }
+
+  & .subtitle {
+    font-size: 1.3em;
+    text-align: left !important;
+    font-family: "Marck Script", sans-serif;
   }
 
   & .block {

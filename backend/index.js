@@ -223,12 +223,13 @@ app.post("/api/v1/social/vk/posts/get/photo", (req, res) => {
             console.log(_dd);
         });
 
-        await VK.setToken("f7b598f062ff35494ecc94020daa63d11fad33d36b57411c59f1840af6625d84724c63848fb9d083179d5");
+        await VK.setToken("5963eade5963eade5963eade5b590ca70f559635963eade074fe0d4ec41d533f56861c9");
 
         VK.request("wall.get", {
             "owner_id"  : 39697620,
             "count"     : 50
         }, (data) => {
+            console.log(data);
             data.response.items.map((post) => {
                 if (post.copy_history === undefined && post.attachments !== undefined) {
                     post.attachments.map((photo) => {
@@ -239,7 +240,6 @@ app.post("/api/v1/social/vk/posts/get/photo", (req, res) => {
                         }
                     })
                 }
-                // return res.json({data: wall, response: "DONE"})
             });
             return res.json({data: wall, response: "DONE"})
         });

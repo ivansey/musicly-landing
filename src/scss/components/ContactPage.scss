@@ -1,0 +1,21 @@
+@import "../_colors";
+
+.contactCard {
+  display: inline-block;
+  text-decoration: none;
+  padding: 20px;
+  color: $colorText;
+  border: 5px solid $borderColor;
+  width: max-content;
+  margin: 5px;
+
+  & .mdi {
+    margin-right: 5px;
+  }
+
+  @media (max-width: 660px) {
+    & {
+      width: 100%;
+    }
+  }
+}

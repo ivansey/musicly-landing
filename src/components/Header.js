@@ -1,6 +1,4 @@
 import React from "react";
-import axios from "axios";
-import cookies from "react-cookies";
 import {withRouter} from "react-router";
 import {Link} from "react-router-dom";
 import {TranslatableText} from "../App";
@@ -19,7 +17,7 @@ let menu = (props, muteVideo, changeMuteVideo) => {
             
             <Link to="/about"><p>
                 <TranslatableText dictionary={{
-                    EN: "About",
+                    EN: "About me",
                     RU: "Обо мне",
                     CH: "关于我",
                 }}/>
@@ -135,7 +133,7 @@ class Header extends React.Component {
                     }}/>
                 </p>
 
-                <object className="arrowsSVG" data={ArrowDown} type="image/svg+xml"></object>
+                <object className="arrowsSVG" data={ArrowDown} type="image/svg+xml"/>
             </div>
             <video src="/videoHeader.mp4" width="100%" height="100%" loop="true" muted={this.state.muteVideo} autoplay="true" preload="" className="video"/>
         </div>

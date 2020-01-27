@@ -8,7 +8,7 @@ class IndexPage extends React.Component {
         super(props);
 
         this.state = {
-            about: {},
+            about   : {},
             articles: [],
         };
 
@@ -16,8 +16,8 @@ class IndexPage extends React.Component {
             window.location.href = "/";
         }
 
-        this.getAbout = this.getAbout.bind(this);
-        this.getArticles = this.getArticles.bind(this);
+        this.getAbout           = this.getAbout.bind(this);
+        this.getArticles        = this.getArticles.bind(this);
         this.returnListArticles = this.returnListArticles.bind(this);
 
         this.getAbout();
@@ -35,7 +35,7 @@ class IndexPage extends React.Component {
             this.setState({
                 articles: data.data.data,
                 response: data.data.response
-            }, () => console.log(this.state));
+            });
         });
     };
 
@@ -75,6 +75,8 @@ class IndexPage extends React.Component {
         return <div className="page">
             <div className="block">
                 <pre>
+                    <p className="title">Volha Mezamuse</p>
+                    <br/>
                     <TranslatableText dictionary={{
                         EN: 'Живая музыка от Volha Mezamuse. Живая музыка украсит любое Ваше событие! Она сделает его незабываемым и эксклюзивным. Живая музыка идеально подходит для любого делового, дружеского, семейного, взрослого, тематического праздника или памятного события. Идеальна для свадеб, юбилеев, презентаций, выставок, модных показов, встречи и проводов гостей, рекламы Вашего продукта, спортивного мероприятия и др. И конечно живая музыка всегда подходит для любого большого и маленького праздника. \n' +
                             'Преимущетва живой музыки от Volha Mezamuse: \n\n' +

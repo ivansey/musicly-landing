@@ -9,15 +9,15 @@ class Repertoire extends React.Component {
                 <br/>
                 <div className="text">
                     <pre>
-                                <h2>
+                                <p className="title">
                                     <TranslatableText dictionary={{
                                         EN: "Repertoire",
                                         RU: "Репертуар",
                                         CH: "Repertoire",
                                     }}/>
-                                </h2>
+                                </p>
                                 <br/>
-                                A <br/>
+                                <p className="subtitle">A</p> <br/>
 A. Celentano "Confessa"<br/>
 A. C. Jobim "The girl from ipanema"<br/>
 Adele "Rolling in the deep"<br/>
@@ -43,13 +43,13 @@ A. Vivaldi .Four seasons. WINTER<br/>
 A. Walker "Faded"<br/>
 A. L. Weber "The phantom of the opera"<br/>
 A. L. Weber "Memory"<br/><br/>
-B<br/>
+                        <p className="subtitle">B</p><br/>
 B. Crewe "Can't Take My Eyes Off You"<br/>
 B. Howard "Fly me to the Moon"<br/>
 B. Kaempfert "Strangers in the night"<br/>
 B. May "We will rock you"<br/>
 B. May "We are the champions"<br/><br/>
-C<br/>
+                        <p className="subtitle">C</p><br/>
 C. Ailin "New rules"<br/>
 C. Cabello "Havana"<br/>
 C. Gardel "Por una cabeza"<br/>
@@ -59,7 +59,7 @@ Ch. Puth "Attention"<br/>
 C. Saent-Sant "My heart at theThy sweet voice"<br/>
 C. M. Schoonberg "I dreamed a dream"<br/>
 C. Velazquez "Besame mucho"<br/><br/>
-D<br/>
+                        <p className="subtitle">D</p><br/>
 D. Guetta "Dangerous"<br/>
 D. Guetta "Without you"<br/>
 D. Kramer "The dancing violinist"<br/>
@@ -67,7 +67,7 @@ Dua Lipa "Kiss and make up"<br/>
 D. Guetta "Dangerous"<br/>
 D. Reynols "Believer"<br/>
 D. Taylor "Jimmy acha"<br/><br/>
-E<br/>
+                        <p className="subtitle">E</p><br/>
 E. Ahbez "Nature boy"<br/>
 E. Buendia "El bimbo"<br/>
 E. Ch. Sheeran "Shape of you"<br/>
@@ -85,14 +85,14 @@ E. Gruber "Silent night"<br/>
 E. Morriccone " Le professinale" (french movie)<br/>
 E. Plum "Ego"<br/>
 E. Ramazzotti "Piu che puoi"<br/><br/>
-F<br/>
+                        <p className="subtitle">F</p><br/>
 F. Andre "Dream a little dream"<br/>
 F. Kreisler "Liebesleid"<br/>
 F. Sartori "Time to say goodbay"<br/>
 F. Shubert "Ave Maria"<br/>
 F. Shubert "Serenade"<br/>
 F. Van der Heijden "Explosive"<br/><br/>
-G<br/>
+                        <p className="subtitle">G</p><br/>
 G. Bizet "Habanera"<br/>
 G. Douglas "What a wonderful world"<br/>
 G.Gershwin "Summertime"<br/>
@@ -104,13 +104,13 @@ G. Michael "Last Christmas"<br/>
 G. M. Rodriguez "Cumparsita"<br/>
 G. Shearing "Lullaby of birdland"<br/>
 G. Weiss "Can't help falling in love"<br/><br/>
-H<br/>
+                        <p className="subtitle">H</p><br/>
 H. Arlen "Over the rainbow"<br/>
 H. Mancini "Moon river"<br/>
 H. Zimmer "He's a pirate"<br/><br/>
-I<br/>
+                        <p className="subtitle">I</p><br/>
 I. Berlin "Cheek to cheek"<br/><br/>
-J<br/>
+                        <p className="subtitle">J</p><br/>
 J. Brahms "Hungarian dance 5"<br/>
 J. S. Bach "Air"<br/>
 J. Feliciano "Feliz Navivad"<br/>
@@ -127,10 +127,10 @@ J. Strauss 2 "An der schonen blauen Donau"<br/>
 J. White "La bella cubana"<br/>
 J. Williams "Theme from Shindler's list"<br/>
 J. Y. Park "What is love"<br/><br/>
-K<br/>
+                        <p className="subtitle">K</p><br/>
 K. J. Anderson "Let it go"<br/>
 K. Jenkins "Palladio"<br/><br/>
-L<br/>
+                        <p className="subtitle">L</p><br/>
 L. Cohen "Hallelujah"<br/>
 Linkin Park "Numb"<br/>
 Louiguy "La vie en rose"<br/>
@@ -138,13 +138,13 @@ L. Rodriguez "Despacito"<br/>
 L. Schifrin "Mission imposible"<br/>
 L. Van Beethoven "To Elise"<br/>
 L. Van Beethoven "Ode to Joy"<br/><br/>
-M<br/>
+                        <p className="subtitle">M</p><br/>
 M. Batt "Contradanza"<br/>
 M. Glover "Destiny"<br/>
 M. Jackson "Smooth criminal"<br/>
 M. Martin "Love me like you do"<br/>
 Mexican folk song "La bamba"<br/><br/>
-N<br/>
+                        <p className="subtitle">N</p><br/>
 N. Paganini " Cantabile"<br/>
 M. Posner "Sugar"<br/>
 N. Rosa "Samba"<br/>
@@ -152,7 +152,7 @@ N. Rota " Father-in-law"<br/>
 N. Rota "Theme of love from Romeo and Julet"<br/>
 Nirvana "Smells like teen spirit"<br/>
 N. Uematsu "To Zanarkand"<br/><br/>
-P<br/>
+                        <p className="subtitle">P</p><br/>
 Palladium<br/>
 P. Beltran "Quien sera"<br/>
 P. J. McCartney "Let it be"<br/>
@@ -161,16 +161,16 @@ P.I. Tchaikovsky "Panorama"<br/>
 P.I. Tchaikovsky "Flower's valse"<br/>
 P.I. Tchaikovsky "Barcarola"<br/>
 P.I. Tchaikovsky "Dance of little swan"<br/><br/>
-Q<br/>
+                        <p className="subtitle">Q</p><br/>
 Queen "We will rock you"<br/>
 Queen "We are the champions"<br/><br/>
-R<br/>
+                        <p className="subtitle">R</p><br/>
 R. Gjawadi " Games of thrones"<br/>
 R. Lovland "Moving"<br/>
 R. Lovland "The song from a secret garden"<br/>
 R. Lovland "Promise"<br/>
 R. Wagner "Bridal march"<br/><br/>
-S<br/>
+                        <p className="subtitle">S</p><br/>
 S. Aicioly "Ai se eu te pego"<br/>
 S. Fernandes "Eu Quero Tchu, Eu Quero Tcha"<br/>
 S. Furler "Cheap trills"<br/>
@@ -179,7 +179,7 @@ S. Iradier "La paloma"<br/>
 S. Rachmaninov "Vocalise"<br/>
 S. Smith "Dancing with a stranger"<br/>
 Sting "Shape of my heart"<br/><br/>
-T<br/>
+                        <p className="subtitle">T</p><br/>
 T. Oliphant "Deck the halls"<br/>
 T. Park "Whistle"<br/>
 Traditional belorussian song "Kupalinka"<br/>
@@ -191,17 +191,17 @@ Traditional carol "Oh, Christmas tree<br/>
 Traditional russian song "Kalinka"<br/>
 Traditional ingushese dance "Lezginka"<br/>
 Traditional song "Hava nagila" and 7/40<br/><br/>
-V<br/>
+                        <p className="subtitle">V</p><br/>
 V. Kosma "Le Jouet" (french movie)<br/>
 V. E. Kristovsky "Farewell"<br/>
 V. Monti "Csardas"<br/>
 V.P. Soloviev-Sedoy "Moscow nights"<br/><br/>
-W<br/>
+                        <p className="subtitle">W</p><br/>
 W. Grigahcine "Let me love you"<br/>
 W. A. Mozart "Eine kleine night music"<br/>
 W. A. Mozart "Rondo alla turca"<br/>
 W. Scharf "Ben"<br/><br/>
-Z<br/>
+                        <p className="subtitle">Z</p><br/>
 Z. Abreu "Tiko tico"<br/>
 Zh. Qiufeng "I love you"<br/>
                             </pre>
