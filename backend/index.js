@@ -7,7 +7,7 @@ let cors = require('cors');
 let fileUpload = require("express-fileupload");
 let VKAPI = require("vksdk");
 
-mongoose.connect(process.env.DB_ADDRESS);
+mongoose.connect("mongodb://localhost/landing");
 
 let usersModel = require('./models/users');
 let userSessionModel = require('./models/userSession');
