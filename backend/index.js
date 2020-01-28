@@ -1,3 +1,4 @@
+require("dotenv").config();
 let express = require('express');
 let bodyParser = require('body-parser');
 let mongoose = require('mongoose');
@@ -6,9 +7,7 @@ let cors = require('cors');
 let fileUpload = require("express-fileupload");
 let VKAPI = require("vksdk");
 
-const PORT = 3001;
-
-mongoose.connect("mongodb://localhost/landing");
+mongoose.connect(process.env.DB_ADDRESS);
 
 let usersModel = require('./models/users');
 let userSessionModel = require('./models/userSession');
@@ -209,8 +208,8 @@ app.post("/api/v1/about/edit", (req, res) => {
 app.post("/api/v1/social/vk/posts/get/photo", (req, res) => {
     let wall = [];
     let VK = new VKAPI({
-        "appId"     : 7294417,
-        "appSecret" : "gkX5Ut6GLwv6f4yMlUKe",
+        "appId"     : process.env.VK_APP_ID,
+        "appSecret" : process.env.VK_APP_SECRET,
         "language"  : "ru"
     });(async () => {
         VK.on('serverTokenReady', function(_o) {
@@ -223,20 +222,18 @@ app.post("/api/v1/social/vk/posts/get/photo", (req, res) => {
             console.log(_dd);
         });
 
-        await VK.setToken("5963eade5963eade5963eade5b590ca70f559635963eade074fe0d4ec41d533f56861c9");
+        await VK.setToken(process.env.VK_TOKEN);
 
         VK.request("wall.get", {
-            "owner_id"  : 39697620,
+            "owner_id"  : process.env.VK_ALBUM,
             "count"     : 50
         }, (data) => {
             console.log(data);
             data.response.items.map((post) => {
                 if (post.copy_history === undefined && post.attachments !== undefined) {
                     post.attachments.map((photo) => {
-                        if (photo.type === "photo") {
-                            console.log(photo.photo.photo_1280);
+                        if (photo.type === "photo" && photo.photo.photo_1280 !== undefined) {
                             wall.push(photo.photo.photo_1280);
-                            console.log(wall);
                         }
                     })
                 }
@@ -251,7 +248,6 @@ app.post("/api/v1/storage/image/upload", (req, res) => {
     let file = req.files.file;
 
     console.log("Upload image");
-    console.log(req);
 
     file.mv("../public/storage/image/" + req.body.filename, (err) => {
         if (err) {
@@ -264,13 +260,13 @@ app.post("/api/v1/storage/image/upload", (req, res) => {
 
 // app.post("/storage/image/")
 
-app.listen(PORT, () => {
+app.listen(process.env.PORT, () => {
     usersModel.find({type: "ADMIN"}).then((data) => {
         if (data.length === 0) {
             console.error("Not found admin user\nCreate admin user...");
             let user = new usersModel({
-                email: "admin",
-                pass: md5("admin"),
+                email: process.env.DEFAULT_LOGIN_ADMIN,
+                pass: md5(process.env.DEFAULT_PASSWORD_ADMIN),
                 type: "ADMIN",
             });
             user.save().then(() => {
@@ -305,5 +301,5 @@ app.listen(PORT, () => {
         }
     });
 
-    console.log("Server started on port " + PORT);
+    console.log("Server started on port " + process.env.PORT);
 });

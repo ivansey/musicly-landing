@@ -14,7 +14,6 @@
   & img {
     width: 400px;
     position: relative;
-    height: 250px;
     object-fit: cover;
     margin: 2px;
     border: 1px solid $borderColor;
@@ -32,12 +31,6 @@
     & {
       & img {
         width: 32%;
-        height: 200px;
-      }
-
-      & iframe {
-        width: 99%;
-        height: 500px;
       }
     }
   }
@@ -46,31 +39,6 @@
     & {
       & img {
         width: 99%;
-        height: 350px;
-      }
-
-      & iframe {
-        height: 350px;
-      }
-    }
-  }
-
-  @media (max-width: 550px) {
-    & {
-      & img {
-        height: 200px;
-      }
-
-      & iframe {
-        height: 300px;
-      }
-    }
-  }
-
-  @media (max-width: 435px) {
-    & {
-      & iframe {
-        height: 200px;
       }
     }
   }

@@ -5,7 +5,7 @@
 @import "scss/_pages";
 @import "scss/_colors";
 
-@import url('https://fonts.googleapis.com/css?family=Marck+Script&display=swap&subset=cyrillic,latin-ext');
+@import url("http://allfont.ru/allfont.css?fonts=bikham-cyr-script");
 @import url('/Product Sans Bold.ttf');
 @import url('/Product Sans Bold Italic.ttf');
 @import url('/Product Sans Bold Italic.ttf');
@@ -76,7 +76,7 @@ a {
 }
 
 pre {
-  font-family: "Marck Script", sans-serif;
+  font-family: 'Bikham Cyr Script', arial;
   width: 100%;
   white-space: pre-line;
   font-size: 1.2em;
@@ -84,7 +84,7 @@ pre {
   & .title {
     font-size: 1.3em;
     text-align: left !important;
-    font-family: "Marck Script", sans-serif;
+    font-family: 'Bikham Cyr Script', arial;
   }
 
   & img {

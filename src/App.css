@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Noto+Sans:400,400i,700&display=swap&subset=cyrillic");
-@import url("https://fonts.googleapis.com/css?family=Marck+Script&display=swap&subset=cyrillic,latin-ext");
+@import url("http://allfont.ru/allfont.css?fonts=bikham-cyr-script");
 @import url("/Product Sans Bold.ttf");
 @import url("/Product Sans Bold Italic.ttf");
 @import url("/Product Sans Bold Italic.ttf");
@@ -213,7 +213,6 @@ html, body {
   .flex-gallery img {
     width: 400px;
     position: relative;
-    height: 250px;
     object-fit: cover;
     margin: 2px;
     border: 1px solid #000; }
@@ -225,25 +224,10 @@ html, body {
     border: 1px solid #000; }
   @media (max-width: 1024px) {
     .flex-gallery img {
-      width: 32%;
-      height: 200px; }
-    .flex-gallery iframe {
-      width: 99%;
-      height: 500px; } }
+      width: 32%; } }
   @media (max-width: 650px) {
     .flex-gallery img {
-      width: 99%;
-      height: 350px; }
-    .flex-gallery iframe {
-      height: 350px; } }
-  @media (max-width: 550px) {
-    .flex-gallery img {
-      height: 200px; }
-    .flex-gallery iframe {
-      height: 300px; } }
-  @media (max-width: 435px) {
-    .flex-gallery iframe {
-      height: 200px; } }
+      width: 99%; } }
 
 .page {
   margin-top: 40px;
@@ -327,14 +311,14 @@ a {
     cursor: pointer; }
 
 pre {
-  font-family: "Marck Script", sans-serif;
+  font-family: 'Bikham Cyr Script', arial;
   width: 100%;
   white-space: pre-line;
   font-size: 1.2em; }
   pre .title {
     font-size: 1.3em;
     text-align: left !important;
-    font-family: "Marck Script", sans-serif; }
+    font-family: 'Bikham Cyr Script', arial; }
   pre img {
     width: 100%; }
 

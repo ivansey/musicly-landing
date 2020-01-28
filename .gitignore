@@ -8,6 +8,9 @@
 /backend/storage
 /public/storage
 
+.env
+/backend/.env
+
 # testing
 /coverage
 

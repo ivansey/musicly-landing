@@ -27,7 +27,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "prestart-linux": "sh init.sh"
+    "prestart-linux": "sh init.sh",
+    "startProd": "pm2 start react-scripts - start"
   },
   "proxy": "http://localhost:3001",
   "eslintConfig": {
