@@ -11,13 +11,13 @@ let menu = (props, muteVideo, changeMuteVideo) => {
                 <TranslatableText dictionary={{
                     EN: "Home",
                     RU: "Главная",
-                    CH: "首页",
+                    CH: "主页面",
                 }}/>
             </p></Link>
             
             <Link to="/about"><p>
                 <TranslatableText dictionary={{
-                    EN: "About me",
+                    EN: "About myself",
                     RU: "Обо мне",
                     CH: "关于我",
                 }}/>
@@ -27,7 +27,7 @@ let menu = (props, muteVideo, changeMuteVideo) => {
                 <TranslatableText dictionary={{
                     EN: "Projects",
                     RU: "Проекты",
-                    CH: "关于我",
+                    CH: "项目",
                 }}/>
             </p></Link>
             
@@ -35,15 +35,15 @@ let menu = (props, muteVideo, changeMuteVideo) => {
                 <TranslatableText dictionary={{
                     EN: "Repertoire",
                     RU: "Репертуар",
-                    CH: "剧目",
+                    CH: "保留曲目",
                 }}/>
             </p></Link>
             
             <Link to="/gallery"><p>
                 <TranslatableText dictionary={{
                     EN: "Gallery",
-                    RU: "Галлерея",
-                    CH: "艺廊",
+                    RU: "Галерея",
+                    CH: "碌莽禄",
                 }}/>
             </p></Link>
             
@@ -57,9 +57,9 @@ let menu = (props, muteVideo, changeMuteVideo) => {
             
             <Link to="/contacts"><p>
                 <TranslatableText dictionary={{
-                    EN: "Contact",
+                    EN: "Contacts",
                     RU: "Контакты",
-                    CH: "联络资料",
+                    CH: "联系方式",
                 }}/>
             </p></Link>
             
@@ -133,7 +133,7 @@ class Header extends React.Component {
                     }}/>
                 </p>
 
-                <object className="arrowsSVG" data={ArrowDown} type="image/svg+xml"/>
+                <a href="#page" className="arrowsSVG"><span className="mdi mdi-arrow-down-bold-outline"/></a>
             </div>
             <video src="/videoHeader.mp4" width="100%" height="100%" loop="true" muted={this.state.muteVideo} autoplay="true" preload="" className="video"/>
         </div>

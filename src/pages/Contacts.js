@@ -11,7 +11,7 @@ class Contacts extends React.Component {
     };
 
     render() {
-        return <div className="page">
+        return <div className="page" id="page">
             <div className="block">
                 <br/>
                 <div className="text">
@@ -23,6 +23,13 @@ class Contacts extends React.Component {
                                   CH: "Contacts",
                               }}/>
                           </p>
+                        <br/>
+                        <TranslatableText dictionary={{
+                            EN: "I would like to see you among the fans of good live music and I would like to share with You the most interesting news, videos and projects what we have. Contact Volha Mezamuse if you love music! And here are my contacts) \n I will answer all of your questions.",
+                            RU: "Я бы хотела видеть Вас в числе поклонников хорошей живой музыки и делиться с Вами самым интересным и новым. Обращайтесь к Volha Mezamuse, если Вы любите музыку! \n А вот и контакты, по которым я Вам отвечу на все вопросы.",
+                            CH: "我希望能够与你们交换音乐世界最新的最有趣的现象及能亲见你们迷上了优质的实况音乐。找好音乐就找《Volha Mezamuse》实况音乐活动策划代理。\n" +
+                                "我们的联系方式（咨询）：",
+                        }}/>
                         <br/>
                         {this.contactCard("EMail GMail", "volhaviolin8@gmail.com", "mailto:volhaviolin8@gmail.com", "email-edit")}
                         {this.contactCard("EMail Mail.ru", "bgpy@mail.ru", "mailto:bgpy@mail.ru", "email-edit")}

@@ -2,33 +2,35 @@ import React from "react";
 import {withRouter} from "react-router";
 import axios from "axios";
 import {TranslatableText} from "../App";
+import youtubeURLParser from "js-video-url-parser";
 
 class Gallery extends React.Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            list        : [{}],
-            response    : "LOADING",
-            limit       : 20,
-            limitStep   : 20,
-            lengthData  : 2,
+            list: [{}],
+            response: "LOADING",
+            limit: 20,
+            limitStep: 20,
+            lengthData: 2,
         };
 
-        this.getList    = this.getList.bind(this);
+        this.getList = this.getList.bind(this);
         this.returnList = this.returnList.bind(this);
-        this.plusLimit  = this.plusLimit.bind(this);
+        this.plusLimit = this.plusLimit.bind(this);
 
         this.getList();
     }
 
     getList = () => {
-        axios.post("/api/v1/gallery/getAll", {limit: this.state.limit}).then((data) => {
-            this.setState({
-                list        : data.data.data,
-                lengthData  : data.data.data.length,
-                response    : data.data.response
-            });
+        axios.get("https://www.googleapis.com/youtube/v3/search?order=date&id=UCT3tfoz_QYC9bHEd3SoOoHg&key=AIzaSyBegHAkNTirmY5jIMKGckSQc16r_osnuXo&maxResults=50&part=snippet,contentDetails").then((data) => {
+            // this.setState({
+            //     list: data.data.data,
+            //     lengthData: data.data.data.length,
+            //     response: data.data.response
+            // });
+            console.log(data);
         });
     };
 
@@ -38,12 +40,11 @@ class Gallery extends React.Component {
             return this.state.list.map((item) => {
                 if (item.type === "photo") {
                     return <img src={item.src} alt={item.alt} style={{width: "400"}}/>
+                } else if (item.type === "youtube") {
+                    // return <div id={youtubeURLParser.parse(item.src).id} style={{width: "400"}} render={}/>
+                    return <iframe
+                        src={`https://www.youtube.com/embed/${youtubeURLParser.parse(item.src).id}`}/>
                 }
-                // else if (item.type === "youtube") {
-                //     // return <div id={youtubeURLParser.parse(item.src).id} style={{width: "400"}} render={}/>
-                //     return <iframe
-                //         src={`https://www.youtube.com/embed/${youtubeURLParser.parse(item.src).id}`}/>
-                // }
             });
         } else if (this.state.response === "NOT_FOUND") {
             return <p style={{width: "400"}}>Галерея пуста</p>
@@ -59,7 +60,7 @@ class Gallery extends React.Component {
     };
 
     render() {
-        return <div className="page">
+        return <div className="page" id="page">
             <div className="block">
                 <h2 className="title">
                     <TranslatableText dictionary={{

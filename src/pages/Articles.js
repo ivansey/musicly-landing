@@ -71,7 +71,7 @@ class Articles extends React.Component {
     };
 
     render() {
-        return <div className="page">
+        return <div className="page" id="page">
             <div className="block">
                 <h2 className="title">
                     <TranslatableText dictionary={{

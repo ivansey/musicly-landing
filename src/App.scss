@@ -5,7 +5,7 @@
 @import "scss/_pages";
 @import "scss/_colors";
 
-@import url("http://allfont.ru/allfont.css?fonts=bikham-cyr-script");
+@import url('https://fonts.googleapis.com/css?family=Pacifico&display=swap');
 @import url('/Product Sans Bold.ttf');
 @import url('/Product Sans Bold Italic.ttf');
 @import url('/Product Sans Bold Italic.ttf');
@@ -16,6 +16,10 @@
   font-family: "Product Sans", sans-serif;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   background: #f1e9d2;
 
@@ -23,14 +27,15 @@ body {
     position: fixed;
     width: 100%;
     height: 100%;
-    background: url("/instrument.png");
+    background: url("/1000.jpeg");
+    background-size: cover;
+    background-position-y: 90%;
     z-index: -1;
-    background-repeat: no-repeat;
-    background-position-x: 115%;
 
     @media (max-width: 947px) {
       & {
-        display: none;
+        background: url("/1001.jpeg");
+        background-position-y: 40%;
       }
     }
   }
@@ -76,15 +81,16 @@ a {
 }
 
 pre {
-  font-family: 'Bikham Cyr Script', arial;
+  font-family: 'Pacifico', cursive;
   width: 100%;
   white-space: pre-line;
   font-size: 1.2em;
+  color: #fff;
 
   & .title {
     font-size: 1.3em;
     text-align: left !important;
-    font-family: 'Bikham Cyr Script', arial;
+    font-family: 'Pacifico', cursive;
   }
 
   & img {

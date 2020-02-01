@@ -38,10 +38,12 @@
 
   & .body .arrowsSVG {
     width: 50px;
-    animation: miniChangeOpacity 2s infinite ease-in-out;
+    animation: miniChangeOpacity 1.5s infinite ease-in-out;
     position: relative;
     display: block;
     fill: $headerTextColor;
+    color: #fff;
+    font-size: 2em;
   }
 
   & .body .title {

@@ -40,7 +40,7 @@ class Social extends React.Component {
     };
 
     render() {
-        return <div className="page">
+        return <div className="page" id="page">
             <div className="block">
                 <br/>
                 <div className="text">
