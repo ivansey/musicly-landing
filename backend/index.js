@@ -260,7 +260,7 @@ app.post("/api/v1/storage/image/upload", (req, res) => {
 
 // app.post("/storage/image/")
 
-app.listen(process.env.PORT, () => {
+app.listen(process.env.PORT_BACKEND, () => {
     usersModel.find({type: "ADMIN"}).then((data) => {
         if (data.length === 0) {
             console.error("Not found admin user\nCreate admin user...");
@@ -301,5 +301,5 @@ app.listen(process.env.PORT, () => {
         }
     });
 
-    console.log("Server started on port " + process.env.PORT);
+    console.log("Server started on port " + process.env.PORT_BACKEND);
 });
