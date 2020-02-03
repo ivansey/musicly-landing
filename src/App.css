@@ -36,7 +36,8 @@ html, body {
   position: relative;
   font-size: 2em;
   background-size: cover;
-  background-attachment: fixed; }
+  background-attachment: fixed;
+  border-bottom: 5px #fff solid; }
   .header .body {
     overflow: hidden;
     height: 100%;
@@ -150,13 +151,18 @@ html, body {
         text-decoration: #6d6d6d solid underline; }
 
 .footer {
-  margin: 40px;
+  margin: 20px;
   display: flex;
   font-size: 0.75em;
   color: #fff; }
   .footer * {
     margin-left: 10px;
     margin-right: 10px; }
+  .footer p a {
+    margin: 0; }
+  @media (max-width: 660px) {
+    .footer {
+      margin: 5px; } }
 
 .contactCard {
   display: inline-block;
@@ -170,7 +176,7 @@ html, body {
     margin-right: 5px; }
   @media (max-width: 660px) {
     .contactCard {
-      width: 100%; } }
+      width: calc(100% - 40px); } }
 
 .miniArticles {
   display: flex;
@@ -304,8 +310,8 @@ button {
       width: 100%; } }
 
 a {
-  color: #000;
-  text-decoration: none; }
+  color: #fff;
+  font-family: 'Pacifico', cursive; }
   a:hover {
     color: #6d6d6d;
     text-decoration: #6d6d6d solid underline;
@@ -314,6 +320,8 @@ a {
     color: #6d6d6d;
     text-decoration: #6d6d6d solid underline;
     cursor: pointer; }
+  a.null {
+    font-family: "Product Sans", sans-serif; }
 
 pre {
   font-family: 'Pacifico', cursive;

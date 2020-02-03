@@ -108,13 +108,14 @@ class IndexPage extends React.Component {
                             "5. 高执行的准确性和责任性。\n" +
                             "6. 长期客人享受优惠。",
                     }}/>
+                    <br/>
+                    <Link to="/about"><TranslatableText dictionary={{
+                        EN: 'Open About myself page',
+                        RU: 'Открыть страницу Обо мне',
+                        CH: 'Open About myself page',
+                    }}/></Link>
             </pre>
                 <br/>
-                <Link to="/about"><TranslatableText dictionary={{
-                    EN: 'Open about me',
-                    RU: 'Открыть обо мне',
-                    CH: 'Open about me',
-                }}/></Link>
             </div>
         </div>
     }

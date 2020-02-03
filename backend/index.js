@@ -6,13 +6,14 @@ let md5 = require('md5');
 let cors = require('cors');
 let fileUpload = require("express-fileupload");
 let VKAPI = require("vksdk");
+let youTube = require("youtube-node");
 
 mongoose.connect("mongodb://localhost/landing");
 
 let usersModel = require('./models/users');
 let userSessionModel = require('./models/userSession');
-let galleryModel = require("./models/gallery");
 let aboutModel = require("./models/about");
+let galleryModel = require("./models/gallery");
 
 let app = express();
 
@@ -21,8 +22,17 @@ app.use(fileUpload());
 app.use(cors());
 app.use(express.static("storage"));
 
+let youTubeAPI = new youTube();
 
+youTubeAPI.setKey("AIzaSyBegHAkNTirmY5jIMKGckSQc16r_osnuXo");
 
+youTubeAPI.search("World War z Trailer", 2, (err, res) => {
+    if (err) {
+        console.error(err);
+    } else {
+        console.log(res);
+    }
+})
 
 
 app.post("/api/v1/users/reg", (req, res) => {
@@ -109,65 +119,6 @@ app.post("/api/v1/users/auth/get", (req, res) => {
 });
 
 
-app.post("/api/v1/gallery/get", (req, res) => {
-    galleryModel.findById(req.body._id).then((data) => {
-        if (data.src === undefined) {
-            return res.json({
-                response: "NOT_FOUND", data: [{}]
-            });
-        }
-
-        return res.json({
-            response: "OK", data: data
-        })
-    })
-});
-
-app.post("/api/v1/gallery/getAll", (req, res) => {
-    galleryModel.find({}).limit(req.body.limit).then((data) => {
-        if (data.length === 0) {
-            return res.json({
-                response: "NOT_FOUND", data: [{}]
-            });
-        }
-
-        return res.json({
-            response: "OK", data: data
-        })
-    })
-});
-
-app.post("/api/v1/gallery/add", (req, res) => {
-    userSessionModel.find({token: req.body.token}).then(data => {
-        if (data.length === 0) {
-            return res.json({response: "NOT_ACCESS"});
-        }
-
-        let gallery = new galleryModel({
-            src: req.body.src,
-            alt: req.body.alt,
-            type: req.body.type,
-        });
-        gallery.save();
-        return res.json({response: "DONE"});
-    });
-});
-
-app.post("/api/v1/gallery/delete", (req, res) => {
-    userSessionModel.find({token: req.body.token}).then(data => {
-        if (data.length === 0) {
-            return res.json({response: "NOT_ACCESS"});
-        }
-
-        galleryModel.findByIdAndRemove(req.body._id).then((data) => {
-            return res.json({response: "DONE"});
-        }).catch((err) => {
-            return res.status(500).send(err);
-        });
-    });
-});
-
-
 app.post("/api/v1/about/get", (req, res) => {
     aboutModel.find({}).then((data) => {
         return res.json({
@@ -202,6 +153,16 @@ app.post("/api/v1/about/edit", (req, res) => {
     }).catch((err) => {
         return res.status(500).send(err)
     });
+});
+
+
+app.get("/api/v1/gallery/get", (req, res) => {
+    return res.json({
+        videos: [
+            "https://www.youtube.com/watch?v=axiEs5nfp3I",
+            "https://www.youtube.com/watch?v=cNuXcezaQrg&t=2s", 
+        ]
+    })
 });
 
 
@@ -257,6 +218,7 @@ app.post("/api/v1/storage/image/upload", (req, res) => {
         res.json({response: "OK", url: "/storage/image/" + req.body.filename});
     })
 });
+
 
 // app.post("/storage/image/")
 

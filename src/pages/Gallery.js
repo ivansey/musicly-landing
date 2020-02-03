@@ -9,42 +9,28 @@ class Gallery extends React.Component {
         super(props);
 
         this.state = {
-            list: [{}],
+            list: [null],
             response: "LOADING",
             limit: 20,
             limitStep: 20,
             lengthData: 2,
         };
 
-        this.getList = this.getList.bind(this);
         this.returnList = this.returnList.bind(this);
-        this.plusLimit = this.plusLimit.bind(this);
 
-        this.getList();
-    }
-
-    getList = () => {
-        axios.get("https://www.googleapis.com/youtube/v3/search?order=date&id=UCT3tfoz_QYC9bHEd3SoOoHg&key=AIzaSyBegHAkNTirmY5jIMKGckSQc16r_osnuXo&maxResults=50&part=snippet,contentDetails").then((data) => {
-            // this.setState({
-            //     list: data.data.data,
-            //     lengthData: data.data.data.length,
-            //     response: data.data.response
-            // });
-            console.log(data);
+        axios.get("/api/v1/gallery/get", {}).then((data) => {
+            console.log(data.data.videos);
+            this.setState({list: data.data.videos, response: "OK"});
         });
-    };
+    }
 
     returnList = () => {
         if (this.state.response === "OK") {
             // eslint-disable-next-line array-callback-return
             return this.state.list.map((item) => {
-                if (item.type === "photo") {
-                    return <img src={item.src} alt={item.alt} style={{width: "400"}}/>
-                } else if (item.type === "youtube") {
                     // return <div id={youtubeURLParser.parse(item.src).id} style={{width: "400"}} render={}/>
                     return <iframe
-                        src={`https://www.youtube.com/embed/${youtubeURLParser.parse(item.src).id}`}/>
-                }
+                        src={`https://www.youtube.com/embed/${youtubeURLParser.parse(item).id}`}/>
             });
         } else if (this.state.response === "NOT_FOUND") {
             return <p style={{width: "400"}}>Галерея пуста</p>
@@ -53,19 +39,13 @@ class Gallery extends React.Component {
         }
     };
 
-    plusLimit = () => {
-        this.setState({limit: this.state.limit + this.state.limitStep}, () => {
-            this.getList();
-        });
-    };
-
     render() {
         return <div className="page" id="page">
             <div className="block">
                 <h2 className="title">
                     <TranslatableText dictionary={{
                         EN: "GALLERY",
-                        RU: "ГАЛЛИРЕЯ",
+                        RU: "ГАЛИРЕЯ",
                         CH: "艺廊",
                     }}/>
                 </h2>
@@ -74,14 +54,6 @@ class Gallery extends React.Component {
                     <div className="flex-gallery" ref="container">
                         {this.returnList()}
                     </div>
-                    <br/>
-                    <button onClick={this.plusLimit}>
-                        <TranslatableText dictionary={{
-                            EN: "YET",
-                            RU: "ЕЩЁ",
-                            CH: "更多",
-                        }}/>
-                    </button>
                 </div>
             </div>
         </div>

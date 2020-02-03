@@ -64,8 +64,8 @@ button {
 }
 
 a {
-  color: #000;
-  text-decoration: none;
+  color: #fff;
+  font-family: 'Pacifico', cursive;
 
   &:hover {
     color: $colorTextHover;
@@ -77,6 +77,10 @@ a {
     color: $colorTextHover;
     text-decoration: $colorTextHover solid underline;
     cursor: pointer;
+  }
+
+  &.null {
+    font-family: "Product Sans", sans-serif;
   }
 }
 

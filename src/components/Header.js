@@ -50,7 +50,7 @@ let menu = (props, muteVideo, changeMuteVideo) => {
             <Link to="/backstage"><p>
                 <TranslatableText dictionary={{
                     EN: "Backstage",
-                    RU: "Backstage",
+                    RU: "Закулисье",
                     CH: "后台",
                 }}/>
             </p></Link>
