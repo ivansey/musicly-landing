@@ -13,7 +13,7 @@ class Repertoire extends React.Component {
                                     <TranslatableText dictionary={{
                                         EN: "Repertoire",
                                         RU: "Репертуар",
-                                        CH: "Repertoire",
+                                        CH: "保留曲目",
                                     }}/>
                                 </p>
                                 <br/>

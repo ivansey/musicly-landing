@@ -41,9 +41,9 @@ class Backstage extends React.Component {
                     <pre>
                                 <p className="title">
                                     <TranslatableText dictionary={{
-                                        EN: "Repertoire",
-                                        RU: "Репертуар",
-                                        CH: "Repertoire",
+                                        EN: "Backstage",
+                                        RU: "Закулисье",
+                                        CH: "后台",
                                     }}/>
                                 </p>
                                 <br/>

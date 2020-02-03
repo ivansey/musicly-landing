@@ -49,7 +49,7 @@ class Social extends React.Component {
                               <TranslatableText dictionary={{
                                   EN: "Social",
                                   RU: "Соц. сети",
-                                  CH: "Social",
+                                  CH: "社交网络",
                               }}/>
                           </p>
                         <br/>

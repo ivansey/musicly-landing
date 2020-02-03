@@ -20,7 +20,7 @@ class Contacts extends React.Component {
                               <TranslatableText dictionary={{
                                   EN: "Contacts",
                                   RU: "Контакты",
-                                  CH: "Contacts",
+                                  CH: "联系方式",
                               }}/>
                           </p>
                         <br/>
