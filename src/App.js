@@ -17,6 +17,7 @@ import Repertoire from "./pages/Repertoire";
 import Backstage from "./pages/Backstage";
 import Contacts from "./pages/Contacts";
 import Social from "./pages/Social";
+import Projects from "./pages/Projects";
 
 const LanguageContext = React.createContext("EN");
 const LanguageConsumer = LanguageContext.Consumer;
@@ -80,6 +81,7 @@ class App extends React.Component {
                     <Route path="/" exact component={IndexPage}/>
                     <Route path="/gallery" exact component={Gallery}/>
                     <Route path="/about" exact component={About}/>
+                    <Route path="/projects" exact component={Projects}/>
                     <Route path="/repertoire" exact component={Repertoire}/>
                     <Route path="/articles" exact component={Articles}/>
                     <Route path="/backstage" exact component={Backstage}/>
