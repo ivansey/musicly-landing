@@ -96,7 +96,7 @@ class Header extends React.Component {
         super(props);
 
         this.state = {
-            muteVideo: true,
+            muteVideo: false,
         };
 
         this.changeMuteVideo = this.changeMuteVideo.bind(this);
