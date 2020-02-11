@@ -135,7 +135,7 @@ class Header extends React.Component {
 
                 <a href="#page" className="arrowsSVG"><span className="mdi mdi-arrow-down-bold-outline"/></a>
             </div>
-            <video src="/videoHeader.mp4" width="100%" height="100%" loop="true" muted={this.state.muteVideo} autoplay="true" preload="" className="video"/>
+            <video id="videoHeader" src="/videoHeader.mp4" width="100%" height="100%" loop="true" muted={this.state.muteVideo} autoplay="true" preload="" className="video"/>
         </div>
     }
 }
