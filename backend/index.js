@@ -160,7 +160,8 @@ app.get("/api/v1/gallery/get", (req, res) => {
     return res.json({
         videos: [
             "https://www.youtube.com/watch?v=axiEs5nfp3I",
-            "https://www.youtube.com/watch?v=cNuXcezaQrg&t=2s", 
+            "https://www.youtube.com/watch?v=cNuXcezaQrg&t=2s",
+            "https://www.youtube.com/watch?v=3QkTW0XhG3c",
         ]
     })
 });
