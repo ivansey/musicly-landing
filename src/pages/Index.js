@@ -109,7 +109,7 @@ class IndexPage extends React.Component {
                             "6. 长期客人享受优惠。",
                     }}/>
                     <br/>
-                    <Link to="/about"><TranslatableText dictionary={{
+                    <Link to="/about#header"><TranslatableText dictionary={{
                         EN: 'Open About myself page',
                         RU: 'Открыть страницу Обо мне',
                         CH: 'Open About myself page',

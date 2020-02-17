@@ -111,7 +111,7 @@ class Header extends React.Component {
     };
 
     render() {
-        return <div className="header">
+        return <div className="header" id="header">
             <div className="body">
                 <div className="topBar">
                     {menu({changeLang: this.props.changeLang, lang: this.props.lang}, this.state.muteVideo, this.changeMuteVideo)}
